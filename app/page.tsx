@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Check, CircleCheck, Clock3, Dumbbell, Gauge, Instagram, RefreshCw } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import Scorecard from './components/Scorecard'
-import { INSTAGRAM_URL } from '../lib/site'
+import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
 const sampleDay = [
   ['Barbell Bench Press', '3 × 6–8', '90–120 sec'],
@@ -28,9 +28,9 @@ const faq = [
   ['Do I need a gym?', 'The sample program shown here assumes a commercial gym. The fit check asks where you train before checkout so equipment access can be reviewed honestly before you buy.'],
   ['I am a beginner. Is this too advanced?', 'Starting loads are selected conservatively and the program does not ask you to train to failure. Tell the coach your real experience level in the fit check and intake so the prescription can match it.'],
   ['What if I miss a workout?', 'You do not cram missed sessions into the next day. Four out of five workouts can still be a successful week. Resume the schedule instead of trying to punish yourself for a miss.'],
-  ['Will I lose weight?', 'Elasticity does not promise a specific scale or visual outcome in four weeks. The program is designed to make training progress measurable through performance, consistency, and the numbers you record.'],
+  ['Will I lose weight?', "Elasticity does not promise a specific scale or visual outcome in four weeks. You'll finish with numbers you can compare."],
   ['Do I have to send progress photos?', 'No. Progress photos are not required. The core progress mechanic is the Week 1 vs. Week 4 scorecard.'],
-  ['How fast do I get my program?', 'The launch target is delivery within 72 hours after the full intake is submitted. If that turnaround changes, the site should be updated before taking payment.'],
+  ['How fast do I get my program?', 'The launch target is delivery within 72 hours after the full intake is submitted.'],
   ['Can I ask questions while I run it?', 'The Build includes one revision window. The guided option adds structured weekly check-ins and written coach feedback.'],
   ['What happens after four weeks?', 'Month one is a starting block, not a finish line. Your Week 4 numbers can be used to build the next block instead of starting over from guesses.'],
   ['What if the plan does not fit what I submitted?', 'If the equipment, schedule, or training level does not match your submitted intake, request a revision within seven days. The launch policy includes one rebuild at no additional charge.'],
@@ -54,7 +54,7 @@ function PricingCards() {
       </article>
 
       <article className="launch-price-card featured">
-        <div className="price-kicker">Most people should pick this</div>
+        <div className="price-kicker">My recommendation.</div>
         <h3>The Build + Check-Ins</h3>
         <div className="launch-price"><span>$229</span><strong>$149</strong></div>
         <p>The same custom build, plus a weekly feedback loop with your coach.</p>
@@ -96,7 +96,7 @@ export default function Home() {
             <Link href="/fit" className="button-primary">Take the 90-second fit check <ArrowRight size={15}/></Link>
             <a href="#sample-week" className="launch-text-link">See a real training day ↓</a>
           </div>
-          <p className="trust-line">Free, no card. You see the offer before checkout.</p>
+          <p className="trust-line">Free, no card. You see the price before you buy.</p>
         </div>
 
         <Scorecard />
@@ -110,7 +110,7 @@ export default function Home() {
           <article><RefreshCw size={20}/><h3>You repeat what is familiar.</h3><p>The same machines become a habit, but a habit is not automatically a program.</p></article>
           <article><Gauge size={20}/><h3>You cannot prove what changed.</h3><p>If you never record the starting numbers, there is nothing objective to compare a month later.</p></article>
         </div>
-        <p className="pain-pivot">That is the gap Elasticity is designed to close: <strong>measurement with a plan behind it.</strong></p>
+        <p className="pain-pivot">That's what I build around: <strong>measurement, with a plan behind it.</strong></p>
       </section>
 
       <section className="launch-deliverable section-narrow" id="how-it-works">
@@ -184,9 +184,11 @@ export default function Home() {
           <p>[CREDENTIALS — certification and issuing body, education, years training, years coaching. One or two sentences, plain.]</p>
           <p>[WHY I PROGRAM THIS WAY — a specific story. A training mistake, an injury, a plateau you couldn't explain, a program that wrecked you. This is the paragraph people remember. 3–5 sentences.]</p>
           <p>I program training. I'm not a dietitian and I don't write meal plans, and I don't do rehab. If you need either, I'll tell you who to talk to.</p>
-          <a className="about-instagram" href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener">
-            <Instagram size={16}/> Follow along on Instagram
-          </a>
+          {hasInstagram && (
+            <a className="about-instagram" href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener">
+              <Instagram size={16}/> Follow along on Instagram
+            </a>
+          )}
         </div>
       </section>
 

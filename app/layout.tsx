@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Instrument_Sans, JetBrains_Mono, Newsreader } from 'next/font/google'
 import Link from 'next/link'
-import { INSTAGRAM_URL } from '../lib/site'
+import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 import './globals.css'
 import './home-refresh.css'
 import './launch.css'
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/privacy">Privacy</Link>
               <Link href="/terms">Terms</Link>
               <Link href="/disclaimer">Training disclaimer</Link>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener">Instagram</a>
+              {hasInstagram && <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener">Instagram</a>}
             </div>
           </footer>
         </div>
