@@ -9,10 +9,8 @@ const sans = Manrope({ subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
   title: 'Elasticity | Personalized Training',
-  description: 'Personalized four-week training programs designed around your goals, schedule, experience, and available equipment.',
+  description: 'Personalized four-week training programs built around your goals, schedule, experience, equipment, and recovery.',
 }
-
-const logoStyle = { filter: 'none', mixBlendMode: 'multiply' as const }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -21,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <header className="site-header">
             <Link href="/" className="brand-lockup" aria-label="Elasticity home">
-              <img src="/elasticity-logo.webp" alt="Elasticity" style={logoStyle} />
+              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" />
             </Link>
             <nav className="main-nav" aria-label="Primary navigation">
               <Link href="/onboarding" className="nav-onboarding">Client onboarding</Link>
@@ -35,11 +33,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
           <footer className="site-footer light-footer">
             <div>
-              <img src="/elasticity-logo.webp" alt="Elasticity" style={logoStyle} />
+              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" />
               <p>Personalized training. Built with intention.</p>
             </div>
             <div className="footer-links">
               <Link href="/onboarding">Client onboarding</Link>
+              <Link href="/#about">About me</Link>
               <Link href="/#pricing">Pricing</Link>
               <Link href="/#method">Method</Link>
               <Link href="/login">Client login</Link>
