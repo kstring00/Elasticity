@@ -1,0 +1,514 @@
+/* Cognac visual refresh. This layer intentionally sits after the field-manual
+   system so Claude's structure, typography, spacing, accessibility work, and
+   route behavior remain the baseline while the visual identity becomes warmer,
+   higher-contrast, and closer to the approved cognac reference. */
+
+:root {
+  --paper: #FFFFFF;
+  --ink: #110202;
+  --deep: #A2532A;
+  --deep-alt: #7F1006;
+  --graphite: #62534D;
+  --rule: #E9DED8;
+  --signal: #E55208;
+  --signal-strong: #BB1F06;
+  --signal-bright: #F3CD94;
+  --on-deep: #FFFFFF;
+  --on-deep-muted: #F3CD94;
+  --rule-on-deep: #6A3525;
+  --black: #110202;
+  --ember: #BB1F06;
+  --flame: #E55208;
+  --cognac-glow: #DE9548;
+
+  --cognac: var(--deep);
+  --cognac-deep: var(--deep-alt);
+  --cognac-soft: var(--cognac-glow);
+  --gold: var(--signal-bright);
+  --ivory: var(--paper);
+  --ivory-deep: var(--rule);
+  --espresso: var(--ink);
+  --ink-soft: var(--graphite);
+  --stone: var(--rule);
+  --white: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Header + brand */
+.launch-header {
+  background: color-mix(in srgb, var(--paper) 95%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+.brand-lockup img,
+.light-footer img {
+  filter: none;
+  transition: transform .28s ease, opacity .28s ease;
+}
+
+.brand-lockup:hover img {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.launch-nav a {
+  color: var(--graphite);
+}
+
+.launch-nav a:hover {
+  color: var(--black);
+}
+
+.launch-nav .nav-fit {
+  background: var(--black);
+  color: var(--paper);
+  border: 1px solid var(--black);
+}
+
+.launch-nav .nav-fit:hover {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: var(--paper);
+}
+
+/* Shared details */
+.eyebrow {
+  color: var(--deep);
+}
+
+.button-primary {
+  background: var(--black);
+  color: var(--paper);
+  border: 1px solid var(--black);
+}
+
+.button-primary:hover {
+  background: var(--deep);
+  border-color: var(--deep);
+}
+
+.button-secondary {
+  background: var(--paper);
+  color: var(--black);
+  border-color: color-mix(in srgb, var(--black) 28%, var(--rule));
+}
+
+.button-secondary:hover {
+  border-color: var(--deep);
+  color: var(--deep-alt);
+}
+
+.button-primary,
+.button-secondary,
+.nav-fit {
+  transition: transform .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.nav-fit:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary svg,
+.button-secondary svg,
+.launch-text-link svg,
+.nav-fit svg {
+  transition: transform .22s ease;
+}
+
+.button-primary:hover svg,
+.button-secondary:hover svg,
+.launch-text-link:hover svg,
+.nav-fit:hover svg {
+  transform: translateX(3px);
+}
+
+/* Hero */
+.launch-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--paper) 0%, color-mix(in srgb, var(--signal-bright) 10%, var(--paper)) 100%);
+  border-bottom-color: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.launch-hero::before {
+  content: '';
+  position: absolute;
+  width: min(48vw, 720px);
+  aspect-ratio: 1;
+  right: -13vw;
+  top: -28%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 38%, color-mix(in srgb, var(--signal) 18%, transparent) 0 18%, transparent 48%),
+    radial-gradient(circle at 58% 58%, color-mix(in srgb, var(--deep) 12%, transparent), transparent 62%);
+  filter: blur(4px);
+  pointer-events: none;
+  z-index: -1;
+  animation: cognacAmbient 12s ease-in-out infinite alternate;
+}
+
+.launch-hero-copy,
+.scorecard-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.launch-hero-copy {
+  animation: heroCopyIn .72s cubic-bezier(.2,.75,.2,1) both;
+}
+
+.launch-hero h1 em {
+  color: var(--deep);
+}
+
+.launch-lead,
+.trust-line {
+  color: var(--graphite);
+}
+
+.launch-text-link {
+  color: var(--deep-alt);
+  border-bottom-color: color-mix(in srgb, var(--deep) 32%, transparent);
+}
+
+.launch-text-link:hover {
+  color: var(--signal-strong);
+  border-bottom-color: var(--signal-strong);
+}
+
+/* Scorecard */
+.scorecard-shell {
+  border-color: color-mix(in srgb, var(--black) 22%, var(--rule));
+  background: color-mix(in srgb, var(--paper) 96%, var(--signal-bright));
+  animation: heroCardIn .82s .08s cubic-bezier(.2,.75,.2,1) both;
+}
+
+.scorecard-shell::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--black), var(--deep), var(--signal), var(--cognac-glow));
+}
+
+.scorecard-head,
+.scorecard-grid,
+.scorecard-foot {
+  border-color: color-mix(in srgb, var(--black) 12%, var(--rule));
+}
+
+.scorecard-grid {
+  transition: background .2s ease;
+}
+
+.scorecard-grid:not(.scorecard-labels):hover {
+  background: color-mix(in srgb, var(--signal-bright) 12%, var(--paper));
+}
+
+.scorecard-grid .week4 {
+  color: var(--signal-strong);
+}
+
+.scorecard-foot {
+  color: var(--graphite);
+}
+
+/* Problem + deliverable */
+.pain-grid,
+.deliverable-grid,
+.fit-columns,
+.week-grid,
+.launch-pricing-grid,
+.guarantee,
+.about-section,
+.faq-list {
+  border-color: color-mix(in srgb, var(--black) 13%, var(--rule));
+}
+
+.pain-grid article,
+.deliverable-grid article,
+.fit-columns > div,
+.week-grid article,
+.launch-price-card,
+.faq-list details {
+  border-color: color-mix(in srgb, var(--black) 13%, var(--rule));
+}
+
+.pain-grid article,
+.deliverable-grid article,
+.fit-columns > div {
+  transition: background .22s ease, transform .22s ease;
+}
+
+.pain-grid article:hover,
+.deliverable-grid article:hover,
+.fit-columns > div:hover {
+  background: color-mix(in srgb, var(--signal-bright) 10%, var(--paper));
+}
+
+.pain-grid svg,
+.deliverable-grid svg {
+  color: var(--deep);
+}
+
+.pain-pivot strong {
+  color: var(--black);
+}
+
+/* Real training day */
+.sample-table {
+  border-color: color-mix(in srgb, var(--black) 20%, var(--rule));
+}
+
+.sample-head {
+  background: var(--black);
+  color: var(--paper);
+}
+
+.sample-head span {
+  color: color-mix(in srgb, var(--paper) 78%, var(--signal-bright));
+}
+
+.sample-row {
+  border-color: var(--rule);
+  transition: background .18s ease;
+}
+
+.sample-row:not(.sample-head):hover {
+  background: color-mix(in srgb, var(--signal-bright) 12%, var(--paper));
+}
+
+.sample-note {
+  border-left-color: var(--deep);
+}
+
+/* Method is the high-contrast brand moment */
+.launch-method {
+  background: var(--black);
+  color: var(--paper);
+  border-top-color: var(--black);
+}
+
+.launch-method .eyebrow,
+.launch-method .week-grid article > span {
+  color: var(--signal-bright);
+}
+
+.launch-method .launch-section-head p,
+.launch-method .week-grid p,
+.launch-method .method-closing span {
+  color: color-mix(in srgb, var(--paper) 66%, var(--graphite));
+}
+
+.launch-method .week-grid,
+.launch-method .week-grid article,
+.launch-method .method-closing {
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+}
+
+.launch-method .week-grid article {
+  transition: background .24s ease, color .24s ease;
+}
+
+.launch-method .week-grid article:hover {
+  background: color-mix(in srgb, var(--deep) 22%, var(--black));
+}
+
+.launch-method .method-closing strong {
+  color: var(--paper);
+}
+
+/* Pricing */
+.launch-price-card {
+  transition: transform .24s ease, background .24s ease, border-color .24s ease;
+}
+
+.launch-price-card:not(.featured):hover {
+  transform: translateY(-4px);
+  background: color-mix(in srgb, var(--signal-bright) 9%, var(--paper));
+}
+
+.launch-price-card.featured {
+  position: relative;
+  background: var(--black);
+  color: var(--paper);
+}
+
+.launch-price-card.featured::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--deep), var(--signal), var(--cognac-glow));
+}
+
+.launch-price-card.featured .price-kicker,
+.launch-price-card.featured > p,
+.launch-price-card.featured li svg {
+  color: var(--signal-bright);
+}
+
+.launch-price strong {
+  color: var(--deep-alt);
+}
+
+.launch-price-card.featured .launch-price strong {
+  color: var(--signal-bright);
+}
+
+.launch-price-card.featured .button-primary {
+  background: var(--paper);
+  color: var(--black);
+  border-color: var(--paper);
+}
+
+.launch-price-card.featured .button-primary:hover {
+  background: var(--signal-bright);
+  color: var(--black);
+  border-color: var(--signal-bright);
+}
+
+.continuation-note strong {
+  color: var(--deep-alt);
+}
+
+/* Guarantee */
+.guarantee {
+  position: relative;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--signal-bright) 14%, var(--paper)), var(--paper) 58%);
+  padding-left: clamp(18px, 2vw, 28px);
+}
+
+.guarantee::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 72px;
+  bottom: 72px;
+  width: 3px;
+  background: linear-gradient(var(--deep), var(--signal));
+}
+
+/* About + FAQ */
+.about-mark,
+.about-portrait {
+  border-color: color-mix(in srgb, var(--black) 28%, var(--rule));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--signal-bright) 18%, var(--paper)), var(--paper));
+}
+
+.about-mark {
+  color: var(--deep-alt);
+}
+
+.about-instagram,
+.faq-list summary::after {
+  color: var(--deep);
+}
+
+.faq-list details {
+  transition: background .2s ease;
+}
+
+.faq-list details:hover {
+  background: color-mix(in srgb, var(--signal-bright) 8%, var(--paper));
+}
+
+/* Footer */
+.site-footer,
+.launch-footer {
+  background: var(--black);
+  color: var(--paper);
+}
+
+.launch-footer .footer-links a:hover {
+  color: var(--signal-bright);
+}
+
+/* Private routes inherit the cognac palette through the existing aliases.
+   Keep their primary actions high-contrast too. */
+.auth-tab.active,
+.step-pill.active .step-index,
+.week-chip,
+.exercise-thumb {
+  background: var(--deep);
+}
+
+.panel-dark {
+  background: var(--black);
+  border-color: color-mix(in srgb, var(--paper) 16%, transparent);
+}
+
+/* Minimal, high-impact motion */
+.motion-ready {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity .62s cubic-bezier(.2,.75,.2,1),
+    transform .62s cubic-bezier(.2,.75,.2,1);
+}
+
+.motion-ready.motion-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes heroCopyIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroCardIn {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes cognacAmbient {
+  from { transform: translate3d(0, 0, 0) scale(1); opacity: .72; }
+  to { transform: translate3d(-22px, 18px, 0) scale(1.06); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .launch-hero::before,
+  .launch-hero-copy,
+  .scorecard-shell {
+    animation: none !important;
+  }
+
+  .motion-ready,
+  .motion-ready.motion-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .button-primary:hover,
+  .button-secondary:hover,
+  .nav-fit:hover,
+  .launch-price-card:not(.featured):hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .launch-hero::before {
+    width: 92vw;
+    right: -48vw;
+    top: -8%;
+    opacity: .72;
+  }
+
+  .guarantee {
+    padding-left: 18px;
+  }
+
+  .guarantee::before {
+    top: 40px;
+    bottom: 40px;
+  }
+}
