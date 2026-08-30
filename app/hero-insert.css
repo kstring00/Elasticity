@@ -1,0 +1,114 @@
+/* Generated cinematic hero replacement. Desktop gets the new full-width visual;
+   mobile keeps the live semantic hero so text and actions remain readable. */
+
+.home-hero-composite {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f3c47f;
+  border-bottom: 1px solid color-mix(in srgb, var(--black) 16%, transparent);
+  isolation: isolate;
+}
+
+.home-hero-composite::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 -90px 110px -95px rgba(17, 2, 2, .55);
+}
+
+.home-hero-composite > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 620px;
+  object-fit: cover;
+  object-position: center center;
+  animation: compositeHeroIn .7s cubic-bezier(.2,.75,.2,1) both;
+}
+
+.hero-hotspot {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  opacity: 0;
+  border-radius: 4px;
+}
+
+.hero-hotspot-fit {
+  left: 4.1%;
+  top: 64.2%;
+  width: 18.6%;
+  height: 6.4%;
+}
+
+.hero-hotspot-sample {
+  left: 23.3%;
+  top: 64.2%;
+  width: 14.5%;
+  height: 6.4%;
+}
+
+.hero-hotspot-scroll {
+  left: 46.5%;
+  bottom: 1.8%;
+  width: 8%;
+  height: 7%;
+}
+
+.hero-hotspot:focus-visible {
+  opacity: 1;
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  background: rgba(17, 2, 2, .18);
+}
+
+.launch-header .brand-lockup {
+  display: flex;
+  align-items: center;
+  min-width: 190px;
+}
+
+.launch-header .brand-lockup img {
+  display: block;
+  width: 188px;
+  height: auto;
+  max-height: 58px;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes compositeHeroIn {
+  from { opacity: 0; transform: scale(1.012); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (min-width: 761px) {
+  .home-hero-composite + .launch-home > .launch-hero:first-child {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-hero-composite {
+    display: none;
+  }
+
+  .launch-header .brand-lockup {
+    min-width: 136px;
+  }
+
+  .launch-header .brand-lockup img {
+    width: 138px;
+    max-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-composite > img {
+    animation: none;
+  }
+}
