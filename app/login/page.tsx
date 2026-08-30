@@ -52,7 +52,7 @@ export default function LoginPage() {
     <main className="auth-page">
       <section className="auth-art">
         <div className="auth-art-copy">
-          <div className="eyebrow" style={{ color: '#f0cd8e' }}>Elasticity client portal</div>
+          <div className="eyebrow" style={{ color: 'var(--on-deep-muted)' }}>Elasticity client portal</div>
           <h1>Your plan should feel like it belongs to you.</h1>
           <p style={{ opacity: .72, lineHeight: 1.7 }}>Sign in to access your assigned program, exercise library, downloads, check-ins, and progress history.</p>
         </div>
@@ -60,7 +60,7 @@ export default function LoginPage() {
 
       <section className="auth-panel">
         <div className="auth-box">
-          <LockKeyhole size={26} color="#a9561e" />
+          <LockKeyhole size={26} color="var(--deep)" />
           <h2>{paid ? 'Your purchase is complete.' : 'Welcome back.'}</h2>
           <p className="form-note">{paid ? 'Create or sign into your account so we can connect your order to your onboarding.' : 'Use the account connected to your Elasticity program.'}</p>
 
