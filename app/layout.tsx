@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { Instrument_Sans, JetBrains_Mono, Newsreader } from 'next/font/google'
 import Link from 'next/link'
+import MotionEnhancer from './components/MotionEnhancer'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 import './globals.css'
 import './home-refresh.css'
 import './launch.css'
+import './cognac-refresh.css'
 
 const display = Newsreader({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400', '500', '600'] })
 const sans = Instrument_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-sans' })
@@ -19,6 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>
+        <MotionEnhancer />
         <div className="site-shell">
           <header className="site-header launch-header">
             <Link href="/" className="brand-lockup" aria-label="Elasticity home">
