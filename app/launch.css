@@ -6,6 +6,11 @@
 /* ---------- Header ---------- */
 .launch-header{height:72px;padding:0 clamp(18px,4vw,58px);background:var(--paper);border-bottom:1px solid var(--rule);backdrop-filter:none}
 .launch-header .brand-lockup img{width:150px}
+/* The wordmark ships as a raster PNG wrapped in an SVG, so its terracotta
+   cannot be recoloured as vector. This filter maps it onto --deep, which also
+   keeps the last non-numeric warm accent off the page. A redrawn vector asset
+   is the real fix. */
+.brand-lockup img,.light-footer img{filter:grayscale(1) brightness(.42) sepia(1) hue-rotate(105deg) saturate(2.2)}
 .launch-nav{gap:22px;font-size:.75rem;letter-spacing:.06em;font-weight:500;text-transform:none}
 .launch-nav a{opacity:1;color:var(--graphite)}
 .launch-nav a:hover{color:var(--ink)}

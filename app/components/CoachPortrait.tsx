@@ -20,6 +20,10 @@ export default function CoachPortrait() {
       alt="Abrielle"
       width={320}
       height={380}
+      /* /coach.jpg is not in the repo yet. Without `unoptimized` the image
+         optimizer throws a 500 on every request for the missing file; this
+         way it is a plain 404 and the onError fallback below takes over. */
+      unoptimized
       onError={() => setFailed(true)}
     />
   )

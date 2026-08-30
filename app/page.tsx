@@ -134,8 +134,8 @@ export default function Home() {
           <p>Week 1, Day 1: chest, triceps, quads, then anterior core. The value is in the specificity.</p>
         </div>
         <div className="sample-table" role="table" aria-label="Sample Monday training day">
-          <div className="sample-row sample-head" role="row"><span>Exercise</span><span>Sets × reps</span><span>Rest</span></div>
-          {sampleDay.map(([exercise, reps, rest]) => <div className="sample-row" role="row" key={exercise}><strong>{exercise}</strong><span>{reps}</span><span>{rest}</span></div>)}
+          <div className="sample-row sample-head" role="row"><span role="columnheader">Exercise</span><span role="columnheader">Sets × reps</span><span role="columnheader">Rest</span></div>
+          {sampleDay.map(([exercise, reps, rest]) => <div className="sample-row" role="row" key={exercise}><strong role="cell">{exercise}</strong><span role="cell">{reps}</span><span role="cell">{rest}</span></div>)}
         </div>
         <div className="sample-note"><strong>Then anterior core:</strong> bench knee tucks 3 × 10–12 and ab roller 2 × 6–10. Record the key Week 1 loads so Week 4 has something real to compare against.</div>
       </section>

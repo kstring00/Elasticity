@@ -22,7 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <header className="site-header launch-header">
             <Link href="/" className="brand-lockup" aria-label="Elasticity home">
-              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" />
+              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" width={600} height={193} />
             </Link>
             <nav className="main-nav launch-nav" aria-label="Primary navigation">
               <Link href="/#how-it-works">How it works</Link>
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
           <footer className="site-footer light-footer launch-footer">
             <div>
-              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" />
+              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" width={600} height={193} />
               <p>Custom four-week training programs built around measurable progress.</p>
             </div>
             <div className="footer-links">
