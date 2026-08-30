@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import Link from 'next/link'
 import './globals.css'
+import './home-refresh.css'
 
 const display = Cormorant_Garamond({ subsets: ['latin'], variable: '--font-display', weight: ['500','600','700'] })
 const sans = Manrope({ subsets: ['latin'], variable: '--font-sans' })
