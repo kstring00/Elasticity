@@ -21,22 +21,25 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <img src="/elasticity-logo.webp" alt="Elasticity" />
             </Link>
             <nav className="main-nav" aria-label="Primary navigation">
-              <Link href="/#method">Method</Link>
-              <Link href="/exercises">Exercises</Link>
+              <Link href="/onboarding" className="nav-onboarding">Client onboarding</Link>
+              <Link href="/#about">About me</Link>
               <Link href="/#pricing">Pricing</Link>
+              <Link href="/#transformations">Transformations</Link>
+              <Link href="/#method">Elasticity method</Link>
               <Link href="/login" className="nav-login">Client login</Link>
             </nav>
           </header>
           {children}
-          <footer className="site-footer">
+          <footer className="site-footer light-footer">
             <div>
               <img src="/elasticity-logo.webp" alt="Elasticity" />
               <p>Personalized training. Built with intention.</p>
             </div>
             <div className="footer-links">
+              <Link href="/onboarding">Client onboarding</Link>
+              <Link href="/#pricing">Pricing</Link>
+              <Link href="/#method">Method</Link>
               <Link href="/login">Client login</Link>
-              <Link href="/coach">Coach dashboard</Link>
-              <Link href="/exercises">Exercise library</Link>
             </div>
           </footer>
         </div>
