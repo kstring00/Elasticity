@@ -26,18 +26,26 @@ export async function POST(request: NextRequest) {
     const supabase = createSupabaseAdmin()
     if (!supabase) return NextResponse.json({ error: 'Supabase server client is not configured.' }, { status: 503 })
 
-    const { error } = await supabase.from('orders').upsert({
-      stripe_session_id: session.id,
-      stripe_customer_id: typeof session.customer === 'string' ? session.customer : null,
-      stripe_payment_intent_id: typeof session.payment_intent === 'string' ? session.payment_intent : null,
-      client_email: session.customer_details?.email || session.customer_email,
-      product_slug: session.metadata?.plan_slug || 'custom',
-      amount_cents: session.amount_total || 0,
-      status: session.payment_status === 'paid' ? 'paid' : session.payment_status,
-      paid_at: session.payment_status === 'paid' ? new Date().toISOString() : null,
-    }, { onConflict: 'stripe_session_id' })
+    const catalogSlug = session.metadata?.catalog_slug
+    let productId: string | null = null
+    if (catalogSlug) {
+      const { data: product } = await supabase.from('products').select('id').eq('slug', catalogSlug).maybeSingle()
+      productId = product?.id || null
+    }
 
-    if (error) return NextResponse.json({ error: 'Could not record order.' }, { status: 500 })
+    const { error } = await supabase.from('orders').upsert({
+      product_id: productId,
+      stripe_checkout_session_id: session.id,
+      stripe_payment_intent_id: typeof session.payment_intent === 'string' ? session.payment_intent : null,
+      stripe_customer_id: typeof session.customer === 'string' ? session.customer : null,
+      client_email: session.customer_details?.email || session.customer_email,
+      amount_total: session.amount_total || 0,
+      currency: session.currency || 'usd',
+      status: session.payment_status === 'paid' ? 'paid' : 'pending',
+      purchased_at: session.payment_status === 'paid' ? new Date().toISOString() : null,
+    }, { onConflict: 'stripe_checkout_session_id' })
+
+    if (error) return NextResponse.json({ error: 'Could not record order.', detail: error.message }, { status: 500 })
   }
 
   return NextResponse.json({ received: true })
