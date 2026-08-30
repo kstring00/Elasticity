@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: 'Personalized four-week training programs designed around your goals, schedule, experience, and available equipment.',
 }
 
+const logoStyle = { filter: 'none', mixBlendMode: 'multiply' as const }
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
@@ -19,7 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <header className="site-header">
             <Link href="/" className="brand-lockup" aria-label="Elasticity home">
-              <img src="/elasticity-logo.webp" alt="Elasticity" />
+              <img src="/elasticity-logo.webp" alt="Elasticity" style={logoStyle} />
             </Link>
             <nav className="main-nav" aria-label="Primary navigation">
               <Link href="/onboarding" className="nav-onboarding">Client onboarding</Link>
@@ -33,7 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
           <footer className="site-footer light-footer">
             <div>
-              <img src="/elasticity-logo.webp" alt="Elasticity" />
+              <img src="/elasticity-logo.webp" alt="Elasticity" style={logoStyle} />
               <p>Personalized training. Built with intention.</p>
             </div>
             <div className="footer-links">
