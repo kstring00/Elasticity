@@ -1,5 +1,7 @@
 import Link from 'next/link'
-import { ArrowRight, Check, CircleCheck, Clock3, Dumbbell, Gauge, RefreshCw } from 'lucide-react'
+import { ArrowRight, Check, CircleCheck, Clock3, Dumbbell, Gauge, Instagram, RefreshCw } from 'lucide-react'
+import CoachPortrait from './components/CoachPortrait'
+import { INSTAGRAM_URL } from '../lib/site'
 
 const sampleDay = [
   ['Barbell Bench Press', '3 × 6–8', '90–120 sec'],
@@ -75,7 +77,7 @@ function PricingCards() {
           <li><Check size={15}/>Month 2 and 3 built from real results</li>
           <li><Check size={15}/>Progress tracked across all twelve weeks</li>
         </ul>
-        <Link href="/fit" className="button-secondary">Check fit first <ArrowRight size={15}/></Link>
+        <Link href="/fit" className="button-secondary">Start with the fit check <ArrowRight size={15}/></Link>
       </article>
     </div>
   )
@@ -87,7 +89,7 @@ export default function Home() {
       <section className="launch-hero">
         <div className="launch-hero-copy">
           <div className="eyebrow">Custom 4-week training programs</div>
-          <h1>After four weeks, have <em>proof</em> — not a feeling.</h1>
+          <h1>After four weeks, you'll have <em>proof</em> — not a feeling.</h1>
           <p className="launch-lead">Most people train for months without knowing whether it is working. Elasticity gives the month a structure, records the starting point, and brings key movements back in Week 4 so progress can be compared instead of guessed.</p>
           <div className="launch-actions">
             <Link href="/fit" className="button-primary">Take the 90-second fit check <ArrowRight size={15}/></Link>
@@ -119,9 +121,9 @@ export default function Home() {
 
       <section className="launch-deliverable section-narrow" id="how-it-works">
         <div className="launch-section-head">
-          <div className="eyebrow">What you actually get</div>
-          <h2>Stop selling “personalized.” Show the work.</h2>
-          <p>This is not a one-page exercise list. The program uses written progression rules, prescribed rest, check-ins, and a repeatable way to compare the first week with the fourth.</p>
+          <div className="eyebrow">THE DELIVERABLE</div>
+          <h2>What lands in your inbox</h2>
+          <p>A four-week program written for your schedule and your gym, with the reasoning included — not a one-page exercise list.</p>
         </div>
         <div className="deliverable-grid">
           <article><Clock3 size={18}/><div><strong>A structured four-week build</strong><p>Training and recovery days organized into a sequence instead of the same week printed four times.</p></div></article>
@@ -154,7 +156,7 @@ export default function Home() {
           <div className="week-grid">
             {weeks.map(([number,title,copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}
           </div>
-          <div className="method-closing"><strong>Week 4 is not a finale. It is a measurement.</strong><span>The next block should start from the numbers you earned, not from zero.</span></div>
+          <div className="method-closing"><strong>Week 4 is not a finale. It is a measurement.</strong><span>Your next block starts from the numbers you earned, not from zero.</span></div>
         </div>
       </section>
 
@@ -167,9 +169,9 @@ export default function Home() {
       </section>
 
       <section className="launch-pricing section-narrow" id="pricing">
-        <div className="launch-section-head"><div className="eyebrow">Founding-client launch pricing</div><h2>Pick the amount of coaching you actually want.</h2><p>Founding pricing is intentionally lower while Elasticity builds its first proof set. The offer should be reviewed after the first ten clients.</p></div>
+        <div className="launch-section-head"><div className="eyebrow">Founding-client launch pricing</div><h2>Pick the amount of coaching you actually want.</h2><p>Founding pricing, first 10 clients only. Prices go up after that.</p></div>
         <PricingCards />
-        <div className="continuation-note">Already finished a month? The intended continuation offer is <strong>$99 for the next four-week block</strong>, programmed from your Week 4 numbers.</div>
+        <div className="continuation-note">Already finished a month with me? Your next block is <strong>$99</strong> — I already know your numbers.</div>
       </section>
 
       <section className="guarantee section-narrow">
@@ -178,8 +180,20 @@ export default function Home() {
       </section>
 
       <section className="about-section section-narrow" id="about">
-        <div className="about-mark">A</div>
-        <div><div className="eyebrow">About the coach</div><h2>I am Abrielle.</h2><p>Elasticity is built around a simple coaching idea: training should produce information you can use. I build the month around a starting point, a repeatable progression, and a clear re-test so you can see what changed and decide what deserves to progress next.</p><p>I program training. I do not position Elasticity as medical care, rehabilitation, or individualized nutrition treatment. Those boundaries matter because good coaching includes knowing what is outside the coaching scope.</p></div>
+        {/* CoachPortrait renders /coach.jpg. A real photo of Abrielle is REQUIRED before launch —
+            the file does not exist yet, so the monogram fallback is what ships until it is added. */}
+        <CoachPortrait />
+        <div>
+          <div className="eyebrow">About the coach</div>
+          <h2>I'm Abrielle.</h2>
+          {/* TODO: replace bracketed sections with Abrielle's own words before launch */}
+          <p>[CREDENTIALS — certification and issuing body, education, years training, years coaching. One or two sentences, plain.]</p>
+          <p>[WHY I PROGRAM THIS WAY — a specific story. A training mistake, an injury, a plateau you couldn't explain, a program that wrecked you. This is the paragraph people remember. 3–5 sentences.]</p>
+          <p>I program training. I'm not a dietitian and I don't write meal plans, and I don't do rehab. If you need either, I'll tell you who to talk to.</p>
+          <a className="about-instagram" href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener">
+            <Instagram size={16}/> Follow along on Instagram
+          </a>
+        </div>
       </section>
 
       <section className="faq-section section-narrow" id="faq">
