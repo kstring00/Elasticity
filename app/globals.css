@@ -173,7 +173,9 @@ img { max-width: 100%; }
 .auth-panel { display:flex; align-items:center; justify-content:center; padding:50px 24px; background:var(--paper); }
 .auth-box { width:min(100%,460px); }
 .auth-box h2 { font-family:var(--font-display),serif; font-size:52px; margin:0 0 8px; }
-.auth-tabs { display:flex; gap:8px; margin:28px 0; background:var(--paper); padding:5px; border-radius:2px; }
+.auth-tabs { display:flex; gap:8px; margin:28px 0; background:transparent; padding:0; border:1px solid var(--rule); border-radius:2px; }
+.auth-tab { flex:1; border:0; background:transparent; border-radius:2px; padding:11px; color:var(--graphite); }
+.auth-tab.active { background:var(--deep); color:var(--paper); }
 
 .form-stack { display:grid; gap:16px; }
 .field { display:grid; gap:7px; }
@@ -191,6 +193,8 @@ img { max-width: 100%; }
 .intake-aside h1 { font-family:var(--font-display),serif; font-size:50px; line-height:.95; margin:10px 0 18px; }
 .step-list { display:grid; gap:8px; margin-top:28px; }
 
+.step-pill { border:0; text-align:left; padding:13px 14px; border-radius:2px; color:var(--graphite); background:transparent; display:flex; align-items:center; gap:10px; }
+.step-pill.active { background:transparent; color:var(--ink); border:1px solid var(--rule); }
 .step-pill .step-index { width:25px; height:25px; border-radius:2px; display:grid; place-items:center; border:1px solid var(--rule); font-size:10px; }
 .step-pill.active .step-index { background:var(--cognac); color: var(--paper); border-color:var(--cognac); }
 .intake-card { background:var(--paper); border:1px solid var(--rule); border-radius:2px; padding:clamp(26px,4vw,52px); box-shadow: none; }
@@ -284,6 +288,8 @@ img { max-width: 100%; }
   .intake-shell { grid-template-columns:1fr; }
   .intake-aside { position:static; }
   .step-list { grid-template-columns:repeat(4,1fr); overflow:auto; padding-bottom:5px; }
+  .step-pill { white-space:nowrap; }
+  .step-pill span:last-child { display:none; }
   
   
   .dashboard-grid, .coach-layout { grid-template-columns:1fr; }
@@ -315,6 +321,7 @@ img { max-width: 100%; }
   .intake-card { border-radius:2px; padding:24px 18px; }
   .intake-title { font-size:42px; }
   .step-list { grid-template-columns:repeat(7,48px); }
+  .step-pill { padding:10px; justify-content:center; }
   
   .intake-actions { flex-direction:column-reverse; }
   .intake-actions button { width:100%; }
