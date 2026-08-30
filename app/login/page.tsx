@@ -1,21 +1,24 @@
 'use client'
 
-import { FormEvent, useMemo, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { FormEvent, useEffect, useState } from 'react'
 import { ArrowRight, LockKeyhole } from 'lucide-react'
 import { createBrowserSupabaseClient } from '@/lib/supabase/browser'
 
 export default function LoginPage() {
-  const params = useSearchParams()
   const [mode, setMode] = useState<'login' | 'signup'>('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [fullName, setFullName] = useState('')
   const [status, setStatus] = useState('')
-  const next = params.get('next') || '/portal'
-  const paid = params.get('paid') === '1'
+  const [next, setNext] = useState('/portal')
+  const [paid, setPaid] = useState(false)
+  const configured = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY)
 
-  const configured = useMemo(() => Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY), [])
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setNext(params.get('next') || '/portal')
+    setPaid(params.get('paid') === '1')
+  }, [])
 
   async function submit(event: FormEvent) {
     event.preventDefault()
@@ -81,7 +84,7 @@ export default function LoginPage() {
               <label htmlFor="password">Password</label>
               <input id="password" type="password" minLength={8} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
-            <button className="button-primary" type="submit" disabled={!configured && false}>{mode === 'login' ? 'Sign in' : 'Create account'} <ArrowRight size={15}/></button>
+            <button className="button-primary" type="submit">{mode === 'login' ? 'Sign in' : 'Create account'} <ArrowRight size={15}/></button>
           </form>
           {status && <div className="status-note">{status}</div>}
           {!configured && <p className="form-note" style={{ marginTop: 14 }}>Preview mode: Supabase credentials are not connected to this build yet.</p>}
