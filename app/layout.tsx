@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import { Instrument_Sans, JetBrains_Mono, Newsreader } from 'next/font/google'
 import Link from 'next/link'
 import MotionEnhancer from './components/MotionEnhancer'
+import HomeHeroComposite from './components/HomeHeroComposite'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 import './globals.css'
 import './home-refresh.css'
 import './launch.css'
 import './cognac-refresh.css'
+import './hero-insert.css'
 
 const display = Newsreader({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400', '500', '600'] })
 const sans = Instrument_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-sans' })
@@ -25,7 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <header className="site-header launch-header">
             <Link href="/" className="brand-lockup" aria-label="Elasticity home">
-              <img src="/elasticity-logo-transparent.svg" alt="Elasticity" width={600} height={193} />
+              <img src="/elasticity-logo.webp" alt="Elasticity" width={600} height={193} />
             </Link>
             <nav className="main-nav launch-nav" aria-label="Primary navigation">
               <Link href="/#how-it-works">How it works</Link>
@@ -34,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/fit" className="nav-fit">Take the fit check</Link>
             </nav>
           </header>
+          <HomeHeroComposite />
           {children}
           <footer className="site-footer light-footer launch-footer">
             <div>
