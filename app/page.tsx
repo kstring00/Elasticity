@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Check, CircleCheck, Clock3, Dumbbell, Gauge, Instagram, RefreshCw } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
+import Scorecard from './components/Scorecard'
 import { INSTAGRAM_URL } from '../lib/site'
 
 const sampleDay = [
@@ -98,14 +99,7 @@ export default function Home() {
           <p className="trust-line">Free, no card. You see the offer before checkout.</p>
         </div>
 
-        <div className="scorecard-shell" aria-label="Week 1 to Week 4 progress scorecard preview">
-          <div className="scorecard-head"><span>Elasticity progress scorecard</span><strong>Week 1 → Week 4</strong></div>
-          <div className="scorecard-grid scorecard-labels"><span>Movement</span><span>Week 1</span><span>Week 4</span></div>
-          {['Bench press','Leg press','Lat pulldown','T-bar row','Romanian deadlift','DB shoulder press','Energy level'].map((name) => (
-            <div className="scorecard-grid" key={name}><strong>{name}</strong><span>record</span><span>re-test</span></div>
-          ))}
-          <div className="scorecard-foot">The promise is measurement, not a dramatic 28-day photo.</div>
-        </div>
+        <Scorecard />
       </section>
 
       <section className="launch-pain section-narrow">

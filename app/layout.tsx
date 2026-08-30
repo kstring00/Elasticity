@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Manrope } from 'next/font/google'
+import { Instrument_Sans, JetBrains_Mono, Newsreader } from 'next/font/google'
 import Link from 'next/link'
 import { INSTAGRAM_URL } from '../lib/site'
 import './globals.css'
 import './home-refresh.css'
 import './launch.css'
 
-const display = Cormorant_Garamond({ subsets: ['latin'], variable: '--font-display', weight: ['500','600','700'] })
-const sans = Manrope({ subsets: ['latin'], variable: '--font-sans' })
+const display = Newsreader({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400', '500', '600'] })
+const sans = Instrument_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-sans' })
+const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono', weight: ['400', '500', '700'] })
 
 export const metadata: Metadata = {
   title: 'Custom 4-Week Training Programs | Elasticity',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         <div className="site-shell">
           <header className="site-header launch-header">
