@@ -91,7 +91,7 @@ export default async function CoachPage() {
       </div>
 
       {previewMode && (
-        <div className="status-note" style={{ marginBottom: 22, background: '#2a1d16', color: '#e5cba8' }}>
+        <div className="status-note" style={{ marginBottom: 22, background: 'var(--deep-alt)', color: 'var(--on-deep-muted)' }}>
           Preview mode. Live client data appears here when the authenticated coach account is connected.
         </div>
       )}
@@ -105,7 +105,7 @@ export default async function CoachPage() {
 
       <div className="coach-layout">
         <section className="coach-panel">
-          <h2><ClipboardList size={20} style={{ marginRight: 8, verticalAlign: 'middle', color: '#e7bf79' }}/> Intake & build queue</h2>
+          <h2><ClipboardList size={20} style={{ marginRight: 8, verticalAlign: 'middle', color: 'var(--on-deep-muted)' }}/> Intake & build queue</h2>
           <div className="queue-list">
             {queue.map((item, index) => (
               <div className="queue-row" key={`${item.name}-${index}`}>
@@ -115,15 +115,15 @@ export default async function CoachPage() {
             ))}
           </div>
           <div className="owner-tools">
-            <div className="owner-tool"><UsersRound size={18} color="#e7bf79"/><strong>Clients</strong><span>Intake, orders, progress, programs, notes.</span></div>
-            <div className="owner-tool"><Dumbbell size={18} color="#e7bf79"/><strong>Program builder</strong><span>Pull exercises from the shared movement library.</span></div>
+            <div className="owner-tool"><UsersRound size={18} color="var(--on-deep-muted)"/><strong>Clients</strong><span>Intake, orders, progress, programs, notes.</span></div>
+            <div className="owner-tool"><Dumbbell size={18} color="var(--on-deep-muted)"/><strong>Program builder</strong><span>Pull exercises from the shared movement library.</span></div>
             <Link href="/exercises" className="owner-tool"><strong>Exercise library</strong><span>Add media once; reuse it in every future plan.</span></Link>
             <div className="owner-tool"><strong>Transformations</strong><span>Publish only photos with separate marketing approval.</span></div>
           </div>
         </section>
 
         <section className="coach-panel">
-          <h2><Bell size={19} style={{ marginRight: 8, verticalAlign: 'middle', color: '#e7bf79' }}/> Notifications</h2>
+          <h2><Bell size={19} style={{ marginRight: 8, verticalAlign: 'middle', color: 'var(--on-deep-muted)' }}/> Notifications</h2>
           <div className="notification-list">
             {notices.map((notice, index) => (
               <div className="notification-row" key={`${notice.title}-${index}`}>

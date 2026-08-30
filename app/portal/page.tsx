@@ -123,7 +123,7 @@ export default async function PortalPage() {
                 <h2 style={{ marginTop: 14 }}>{dayTitle}</h2>
                 <p className="form-note">{programTitle} · {dayFocus}</p>
               </div>
-              <CalendarDays size={22} color="#a9561e"/>
+              <CalendarDays size={22} color="var(--deep)"/>
             </div>
             <div className="workout-list">
               {workout.length ? workout.map(([initials, exercise, prescription]) => (
@@ -138,7 +138,7 @@ export default async function PortalPage() {
 
           <div className="quick-stack">
             <section className="panel panel-dark">
-              <div className="eyebrow" style={{ color: '#e7bf79' }}>This week</div>
+              <div className="eyebrow" style={{ color: 'var(--on-deep-muted)' }}>This week</div>
               <h2>Your training at a glance.</h2>
               <div className="mini-stat-grid">
                 <div className="mini-stat"><strong>{strengthDays}</strong><span>strength days</span></div>
