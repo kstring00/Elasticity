@@ -37,9 +37,11 @@ export default function HeroSection() {
         />
       </picture>
 
+      <div className="hero-grain" aria-hidden="true" />
+
       <div className="hero-grid">
         <div className="hero-copy">
-          <p className="hero-eyebrow">Custom 4-week training programs</p>
+          <p className="hero-eyebrow glass">Custom 4-week training programs</p>
           <h1 id="hero-heading">
             A four-week program
             <br />

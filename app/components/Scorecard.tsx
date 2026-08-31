@@ -11,7 +11,7 @@ export const SCORECARD_ROWS: ReadonlyArray<readonly [string, string, string]> = 
 
 export default function Scorecard() {
   return (
-    <div className="scorecard">
+    <div className="scorecard glass glass--panel">
       <p className="scorecard-title">Progress scorecard</p>
       <table>
         <caption className="sr-only">Week 1 to week 4 progress scorecard preview</caption>
