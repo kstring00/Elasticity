@@ -9,7 +9,14 @@ export default function HomeHeroComposite() {
 
   return (
     <div className="home-hero-composite" aria-hidden="true">
-      <img src={lakesideHero} alt="" />
+      <img
+        src={lakesideHero}
+        alt=""
+        width={1650}
+        height={928}
+        fetchPriority="high"
+        decoding="sync"
+      />
     </div>
   )
 }
