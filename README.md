@@ -38,16 +38,9 @@ The database migration is in `supabase/migrations/20260830_init_elasticity.sql`.
 
 Never commit Stripe secrets, Supabase service-role keys, webhook signing secrets, or client data. Public browser access uses the Supabase publishable key and is protected by RLS.
 
-## Hero cut-out
 
-The home hero renders the subject from `public/hero-subject.png`, a transparent
-PNG cut out of the studio photograph. Regenerate it with:
+## Hero image
 
-```bash
-pip install pillow
-python3 scripts/make-hero-cutout.py path/to/source.jpg
-```
-
-Keep the source in its original orientation — the hero mirrors the subject in
-CSS so she faces into the headline. If the file is absent the hero still
-renders; the gradient, copy, and glass chrome just stand on their own.
+The home hero uses `public/hero-lakeside-{640,1000}.{avif,webp,jpg}`, generated
+from the source photograph. The source is 1000px wide, so 1000w is the largest
+real step; regenerate all six files if a higher-resolution original arrives.

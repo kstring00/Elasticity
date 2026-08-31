@@ -1,480 +1,449 @@
-/* Full-bleed gradient hero + frosted glass navigation.
-   This layer is imported last so it wins over the earlier visual passes. */
+/* Warm photographic hero + frosted nav.
+   Imported last so it wins over the earlier visual layers. */
+
+:root {
+  --ink: #2E2622;
+  --ink-muted: #5A4F47;
+  --terracotta: #C87F62;
+  --terracotta-deep: #B26B4E;
+  /* Terracotta as *text* only ever hits ~2.1:1 on cream, so accent copy uses
+     this darkened tone. Fills and borders keep the lighter --terracotta. */
+  --terracotta-text: #8C4526;
+  --cream: #FBF6F1;
+  --card: rgba(253, 248, 244, 0.93);
+  --hairline: rgba(46, 38, 34, 0.10);
+
+  /* The rest of the site still asks for these two names. */
+  --font-display: var(--font-serif);
+  --font-sans: var(--font-ui);
+
+  --nav-h: 72px;
+  --shell-inset: 12px;
+  --shell-radius: 16px;
+}
 
 /* ---------------------------------------------------------------
-   1. Liquid glass primitive
-   One class, plus modifiers. Everything frosted on the page uses it:
-   nav bar, nav CTA, hero icon pills, hero email capture.
+   1. Page shell
    --------------------------------------------------------------- */
 
-.glass {
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-    0 8px 32px rgba(0, 0, 0, 0.12);
+body {
+  background: #EFE6DD;
 }
 
-/* Without backdrop-filter (Firefox with the pref off, older Safari) a 10%
-   white fill over a light gradient is effectively invisible. Opt into the
-   translucent version only when the browser can actually blur. */
-.glass {
-  background: rgba(255, 255, 255, 0.16);
+.site-shell {
+  margin: var(--shell-inset);
+  border-radius: var(--shell-radius);
+  background: var(--cream);
+  box-shadow: 0 18px 50px rgba(46, 38, 34, 0.13);
+  min-height: calc(100vh - var(--shell-inset) * 2);
+  /* clip, not hidden: `overflow: hidden` would make the shell a scroll
+     container and kill the sticky nav. */
+  overflow: hidden;
+  overflow: clip;
 }
 
-@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-  .glass {
-    background: rgba(255, 255, 255, 0.10);
+@media (max-width: 900px) {
+  :root { --shell-inset: 0px; }
+
+  body { background: var(--cream); }
+
+  .site-shell {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
   }
 }
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-}
-
-/* Warm tint for the chrome that sits on the pale end of the gradient. */
-.glass--warm {
-  background-image: linear-gradient(180deg, rgba(243, 205, 148, 0.16), rgba(243, 205, 148, 0.06));
-}
-
-/* Circular icon pill. */
-.glass--circle {
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
-.glass--pill { border-radius: 999px; }
 
 /* ---------------------------------------------------------------
-   2. Navigation
+   2. Nav
    --------------------------------------------------------------- */
 
 .site-header.launch-header {
-  height: auto;
-  padding: 18px clamp(16px, 4vw, 40px);
-  border-bottom: 1px solid rgba(74, 44, 61, 0.12);
-  background: rgba(251, 244, 245, 0.92);
-}
-
-/* Over the hero the bar floats: no chrome on the header itself, all of the
-   material lives in the inner rail. */
-.site-header.is-over-hero {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 60;
-  background: transparent !important;
-  border-bottom: 1px solid transparent !important;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition: padding .3s ease;
-}
-
-.nav-rail {
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
+  height: var(--nav-h);
+  padding: 0 clamp(18px, 3.4vw, 40px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(12px, 3vw, 40px);
-  padding: 10px clamp(14px, 2vw, 22px);
-  border-radius: 999px;
-  transition: background .3s ease, box-shadow .3s ease, padding .3s ease;
+  gap: clamp(16px, 3vw, 40px);
+  position: sticky;
+  /* Pin level with the shell's top edge; the shell clips anything above it. */
+  top: var(--shell-inset);
+  z-index: 60;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 250, 246, 0.92) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-/* On interior pages the rail is plain; the header carries the paper. */
-.site-header:not(.is-over-hero) .nav-rail {
-  background: none;
-  border: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  padding-left: 0;
-  padding-right: 0;
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .site-header.launch-header {
+    background: rgba(255, 250, 246, 0.72) !important;
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+  }
 }
 
-.site-header.is-over-hero.is-scrolled {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.site-header .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--terracotta) !important;
+  white-space: nowrap;
 }
 
-.site-header.is-over-hero.is-scrolled .nav-rail {
-  background: rgba(251, 244, 245, 0.72);
-  background-image: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 10px 30px rgba(31, 40, 45, 0.14);
-}
-
-.site-header.is-over-hero .feminine-brand,
-.site-header.is-over-hero .launch-nav a {
-  color: #fff !important;
-}
-
-.site-header.is-over-hero .brand-caret { color: rgba(255, 255, 255, 0.7); }
-
-.site-header.is-over-hero.is-scrolled .feminine-brand,
-.site-header.is-over-hero.is-scrolled .launch-nav a {
-  color: var(--plum, #4a2c3d) !important;
-}
-
-.site-header.is-over-hero.is-scrolled .brand-caret { color: var(--rose, #c98a97); }
-
-.site-header.is-over-hero .launch-nav a:not(.nav-fit):hover {
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.site-header.is-over-hero.is-scrolled .launch-nav a:not(.nav-fit):hover {
-  background: rgba(74, 44, 61, 0.07);
-}
-
-/* Outlined glass CTA. */
-.site-header.is-over-hero .launch-nav .nav-fit {
-  background: rgba(255, 255, 255, 0.10) !important;
-  background-image: linear-gradient(180deg, rgba(243, 205, 148, 0.16), rgba(243, 205, 148, 0.06));
-  border: 1px solid rgba(255, 255, 255, 0.36) !important;
-  color: #fff !important;
-  padding: 11px 20px;
-  font-weight: 600;
-}
-
-.site-header.is-over-hero .launch-nav .nav-fit:hover {
-  background: rgba(255, 255, 255, 0.20) !important;
+.site-header .wordmark .caret {
+  font-size: 1.15em;
+  line-height: 1;
+  letter-spacing: 0;
   transform: translateY(-1px);
 }
 
-.site-header.is-over-hero.is-scrolled .launch-nav .nav-fit {
-  border-color: rgba(74, 44, 61, 0.28) !important;
-  color: var(--plum, #4a2c3d) !important;
+.site-header .launch-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.2vw, 30px);
+}
+
+.site-header .launch-nav a {
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  padding: 0;
+  border-radius: 0;
+  color: var(--ink-muted) !important;
+  background: none !important;
+  transition: color .15s ease;
+}
+
+.site-header .launch-nav a:hover { color: var(--ink) !important; }
+
+.site-header .launch-nav .nav-cta {
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: 0 !important;
+  background: var(--terracotta) !important;
+  color: #fff !important;
+  font-weight: 500;
+  transition: background .15s ease;
+}
+
+.site-header .launch-nav .nav-cta:hover {
+  background: var(--terracotta-deep) !important;
+  color: #fff !important;
 }
 
 /* ---------------------------------------------------------------
-   3. Full-bleed hero
+   3. Hero
    --------------------------------------------------------------- */
 
-.hero-v2 {
+.hero-photo {
   position: relative;
-  width: 100vw;
-  max-width: none;
-  margin-left: calc(50% - 50vw);
-  min-height: 88vh;
-  overflow: hidden;
   isolation: isolate;
-  background:
-    linear-gradient(133deg,
-      #2f4148 0%,
-      #3d4f56 20%,
-      #4e5f61 38%,
-      #7d8c85 58%,
-      #b5bfb2 78%,
-      #e8ebe4 96%);
+  /* Slide up under the sticky nav so the bar sits on the photo. */
+  margin-top: calc(var(--nav-h) * -1);
+  padding: calc(var(--nav-h) + 40px) 0 40px;
+  min-height: calc(max(640px, 78vh) + var(--nav-h));
+  display: flex;
+  align-items: center;
+  background: var(--cream);
 }
 
-/* Soft white glow behind the subject so she lifts off the backdrop. */
-.hero-v2::before {
-  content: '';
+.hero-photo picture,
+.hero-photo .hero-img {
   position: absolute;
-  z-index: 0;
-  right: -6%;
-  bottom: -10%;
-  width: 78vw;
-  height: 78vh;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
-  filter: blur(60px);
-  pointer-events: none;
-}
-
-/* Floor plane the mat can sit on. */
-.hero-v2::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 22%;
-  background: linear-gradient(180deg, rgba(226, 233, 231, 0) 0%, rgba(226, 233, 231, 0.22) 34%, rgba(232, 238, 236, 0.42) 100%);
-  pointer-events: none;
-}
-
-.hero-subject {
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  height: 72%;
-  width: min(64vw, 1100px);
-  background-image: var(--hero-subject-src, none);
-  background-repeat: no-repeat;
-  /* Mirrored in place, so the image is anchored left and lands on the right. */
-  background-position: left bottom;
-  background-size: auto 100%;
-  transform: scaleX(-1);
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: absolute;
-  z-index: 2;
   inset: 0;
-  display: flex;
-  align-items: center;
-}
-
-.hero-copy {
-  padding-left: 6vw;
-  padding-right: 4vw;
-  max-width: min(720px, 56vw);
-}
-
-.hero-v2 h1 {
-  margin: 0 0 24px;
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(44px, 5.4vw, 88px);
-  font-weight: 450;
-  line-height: 0.98;
-  letter-spacing: -0.02em;
-  color: #fff;
-}
-
-.hero-v2 h1 .hero-line-last {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.hero-icon-cluster {
-  display: inline-flex;
-  align-items: center;
-}
-
-.hero-icon-cluster .glass--circle + .glass--circle { margin-left: -8px; }
-
-.hero-icon-cluster svg {
-  width: 22px;
-  height: 22px;
-  stroke: rgba(255, 255, 255, 0.88);
-  stroke-width: 1.5;
-  fill: none;
-}
-
-.hero-sub {
-  max-width: 34ch;
-  margin: 0 0 30px;
-  font-size: 18px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.68);
-}
-
-/* Email capture */
-.hero-capture {
-  display: flex;
-  align-items: center;
-  height: 64px;
-  padding: 6px;
-  max-width: 480px;
-  border-radius: 999px;
-  gap: 8px;
-}
-
-.hero-capture input {
-  flex: 1 1 auto;
-  min-width: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
   height: 100%;
-  padding: 0 18px;
-  border: 0;
-  background: transparent;
-  color: #fff;
-  font-size: 16px;
+  object-fit: cover;
+  object-position: center;
 }
 
-.hero-capture input::placeholder { color: rgba(255, 255, 255, 0.5); }
-.hero-capture input:focus { outline: none; }
-.hero-capture:focus-within { box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 3px rgba(255,255,255,.28); }
+/* Legibility scrim over the left third. */
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(100deg,
+    rgba(255, 247, 240, 0.86) 0%,
+    rgba(255, 247, 240, 0.74) 32%,
+    rgba(255, 247, 240, 0.58) 46%,
+    rgba(255, 247, 240, 0.00) 68%);
+}
 
-.hero-capture button {
-  flex: 0 0 auto;
-  height: 100%;
-  padding: 0 26px;
-  border: 0;
-  border-radius: 999px;
-  background: #1f282d;
-  color: #fff;
-  font-size: 15px;
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 0 4%;
+}
+
+.hero-copy { max-width: 560px; }
+
+.hero-eyebrow {
+  margin: 0 0 18px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 12.5px;
   font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: background .2s ease, transform .2s ease;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracotta-text);
 }
 
-.hero-capture button:hover { background: #10171b; transform: translateY(-1px); }
+.hero-photo h1 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(38px, 3.4vw, 52px);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
 
-.hero-trust {
+.hero-photo h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--terracotta);
+}
+
+.hero-body {
+  margin: 28px 0 0;
+  max-width: 50ch;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.62;
+  /* --ink-muted misses 4.5:1 over the photo; darkened per the contrast pass. */
+  color: #453B34;
+}
+
+.hero-ctas {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 34px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
+  align-items: baseline;
+  gap: 28px;
+  margin-top: 40px;
+  font-family: var(--font-ui), system-ui, sans-serif;
 }
 
-.hero-avatars { display: flex; align-items: center; }
+.hero-cta-primary {
+  padding: 15px 28px;
+  border-radius: 8px;
+  background: var(--terracotta);
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 500;
+  border: 0 !important;
+  box-shadow: none !important;
+  transition: background .15s ease, transform .15s ease;
+}
 
-.hero-avatars span {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.hero-cta-primary:hover {
+  background: var(--terracotta-deep);
+  transform: translateY(-1px);
+}
+
+.hero-cta-secondary {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(200, 127, 98, 0.4);
+  transition: border-color .15s ease;
+}
+
+.hero-cta-secondary:hover { border-bottom-color: var(--terracotta); }
+
+.hero-microcopy {
+  margin: 16px 0 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 13px;
+  /* Sampled against the rendered photo: plain --ink-muted at 75% opacity
+     misses 4.5:1 over the bright band, so this is darkened instead of
+     thickening the scrim. */
+  color: #3F362F;
+}
+
+/* ---------------------------------------------------------------
+   4. Scorecard
+   --------------------------------------------------------------- */
+
+.hero-card-plate { flex: 0 0 auto; }
+
+.scorecard {
+  width: 380px;
+  padding: 20px 18px;
+  border-radius: 12px;
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 40px rgba(46, 38, 34, 0.13);
+  font-family: var(--font-ui), system-ui, sans-serif;
+}
+
+.scorecard-title {
+  margin: 0 0 14px;
+  text-align: center;
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
-  background: linear-gradient(140deg, #6d7f80, #3d4f56);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta-text);
 }
 
-.hero-avatars span + span { margin-left: -10px; }
-.hero-avatars span:nth-child(2) { background: linear-gradient(140deg, #b08a72, #7d5a48); }
-.hero-avatars span:nth-child(3) { background: linear-gradient(140deg, #8fa08e, #5c6b6a); }
-.hero-avatars span:nth-child(4) { background: linear-gradient(140deg, #c9a2a6, #8f6570); }
-
-.hero-trust strong { color: #fff; font-weight: 700; }
-
-/* ---------------------------------------------------------------
-   4. Annotation callouts
-   --------------------------------------------------------------- */
-
-.hero-callouts {
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  pointer-events: none;
+.scorecard table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.hero-callout { position: absolute; }
-
-.hero-callout .dot {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  margin: -5px 0 0 -5px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.4);
+.scorecard thead th {
+  background: rgba(200, 127, 98, 0.09);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 9px 10px;
 }
 
-.hero-callout .leader {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 90px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.5);
-  transform-origin: 0 0;
-  transform: rotate(-30deg);
+.scorecard thead th:first-child { text-align: left; }
+.scorecard thead th + th { text-align: center; }
+
+.scorecard tbody td {
+  font-size: 14px;
+  color: var(--ink);
+  padding: 13px 10px;
+  border-bottom: 1px solid var(--hairline);
 }
 
-.hero-callout .label {
-  position: absolute;
-  font-size: 15px;
-  line-height: 1.3;
-  white-space: nowrap;
-  color: #fff;
-  left: 78px;
-  top: -58px;
+.scorecard tbody tr:last-child td { border-bottom: 0; }
+
+.scorecard .week1 {
+  text-align: center;
+  font-weight: 400;
+  color: var(--ink-muted);
 }
 
-/* Labels that land on the pale lower-right of the gradient go dark. */
-.hero-callout--dark .leader { background: rgba(74, 85, 96, 0.45); }
-.hero-callout--dark .dot { box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.55); }
-.hero-callout--dark .label { color: #4a5560; }
+.scorecard .week4 {
+  text-align: center;
+  font-weight: 600;
+  color: var(--terracotta-text);
+}
 
-/* Leader angles down-right instead of up-right for the lower callouts. */
-.hero-callout--down .leader { transform: rotate(30deg); }
-.hero-callout--down .label { top: 34px; }
+.scorecard .week4 .rise {
+  font-size: 0.85em;
+  margin-left: 3px;
+}
 
-.hero-callout--hand { left: 62%; top: 30%; }
-.hero-callout--back { left: 74%; top: 50%; }
-.hero-callout--leg  { left: 92%; top: 74%; }
-
-/* The right-most callout has no room to the right, so it reaches back inward. */
-.hero-callout--flip .leader { transform: rotate(150deg); }
-.hero-callout--flip .label { left: auto; right: 78px; top: 30px; text-align: right; }
+.scorecard-foot {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(90, 79, 71, 0.8);
+}
 
 /* ---------------------------------------------------------------
    5. Responsive
    --------------------------------------------------------------- */
 
+/* The earlier layers hide every nav link below 900px; the CTA has to stay. */
+@media (max-width: 900px) {
+  .site-header .launch-nav .nav-cta { display: inline-block !important; }
+  .site-header .launch-nav a:not(.nav-cta) { display: none; }
+}
+
 @media (max-width: 1100px) {
-  .hero-copy { max-width: min(600px, 62vw); }
-  .hero-subject { height: 62%; opacity: .9; }
+  .hero-photo { min-height: calc(560px + var(--nav-h)); }
+  .scorecard { width: 320px; }
 }
 
 @media (max-width: 900px) {
-  .hero-callouts { display: none; }
-
-  .hero-v2 {
+  .hero-photo {
+    display: block;
+    padding-bottom: 0;
     min-height: 0;
-    padding: 132px 0 60px;
+    background: var(--cream);
   }
 
-  .hero-inner { position: relative; inset: auto; }
-  .hero-copy { max-width: none; padding-right: 6vw; }
-  .hero-subject { height: 46%; width: 100%; opacity: .32; }
-  .hero-capture { max-width: none; }
-}
+  /* Subject sits low in the frame at this width, so the scrim runs top-down. */
+  .hero-photo::before {
+    bottom: auto;
+    height: 100%;
+    background: linear-gradient(180deg,
+      rgba(255, 247, 240, 0.80) 0%,
+      rgba(255, 247, 240, 0.55) 46%,
+      rgba(255, 247, 240, 0.00) 88%);
+  }
 
-/* Below 760px the earlier layers hide every nav link, so the rail would be an
-   empty bar of glass. Let the brand float until the page scrolls. */
-@media (max-width: 760px) {
-  .site-header.is-over-hero:not(.is-scrolled) .nav-rail {
-    background: none;
-    border-color: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding-left: 0;
-    padding-right: 0;
+  .hero-photo picture,
+  .hero-photo .hero-img { height: 100%; }
+
+  .hero-grid {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+
+  .hero-copy {
+    max-width: none;
+    padding: 0 6vw 56px;
+  }
+
+  .scorecard {
+    position: relative;
+    z-index: 2;
+    width: auto;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 18px 24px;
+  }
+
+  /* Cream plate behind the card so it never sits on the photo. */
+  .hero-photo .hero-card-plate {
+    position: relative;
+    z-index: 2;
+    background: var(--cream);
+    padding: 28px 6vw 36px;
+    margin-top: -1px;
   }
 }
 
-@media (max-width: 640px) {
-  .hero-v2 { padding-top: 116px; }
-  .hero-v2 h1 .hero-line-last { gap: 12px; }
-  .glass--circle { width: 44px; height: 44px; }
-  .hero-icon-cluster svg { width: 19px; height: 19px; }
-  .hero-capture { height: 58px; }
-  .hero-capture button { padding: 0 18px; }
-  .hero-trust { flex-wrap: wrap; }
+@media (max-width: 600px) {
+  .hero-photo h1 { font-size: 32px; }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .hero-cta-primary { text-align: center; }
+  .hero-cta-secondary { align-self: flex-start; }
+  .scorecard { padding: 16px 12px 20px; }
+  .scorecard tbody td { padding: 12px 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-header.is-over-hero,
-  .nav-rail,
-  .hero-capture button,
-  .site-header.is-over-hero .launch-nav .nav-fit {
+  .hero-cta-primary,
+  .hero-cta-primary:hover,
+  .site-header .launch-nav .nav-cta {
     transition: none;
+    transform: none;
   }
 }
 
@@ -490,5 +459,3 @@
   white-space: nowrap;
   border: 0;
 }
-
-.hero-trust p { margin: 0; }

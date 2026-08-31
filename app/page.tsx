@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { ArrowRight, Check, Instagram, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
-import Scorecard from './components/Scorecard'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
 const sampleDay = [
@@ -84,10 +83,6 @@ export default function Home() {
   return (
     <main className="launch-home">
       <HeroSection />
-
-      <section className="scorecard-section section-narrow" aria-label="Progress scorecard preview">
-        <Scorecard />
-      </section>
 
       <section className="scripture-section section-narrow" aria-label="Isaiah 54:2">
         <div className="caret-divider" aria-hidden="true">^</div>

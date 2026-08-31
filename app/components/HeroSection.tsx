@@ -1,97 +1,67 @@
-import type { CSSProperties } from 'react'
-import { ArrowRight, Dumbbell, HeartPulse, Sparkles, Waves } from 'lucide-react'
+import Link from 'next/link'
+import Scorecard from './Scorecard'
 
-// Drop a transparent cut-out at public/hero-subject.png to fill this slot.
-// scripts/make-hero-cutout.py generates it from the source photograph.
-const SUBJECT_SRC = 'url(/hero-subject.png)'
-
-const callouts = [
-  {
-    key: 'hand',
-    className: 'hero-callout hero-callout--hand',
-    lines: ['Shoulder stability', 'through the whole reach'],
-  },
-  {
-    key: 'back',
-    className: 'hero-callout hero-callout--back hero-callout--down',
-    lines: ['Spinal control before', 'anything gets loaded'],
-  },
-  {
-    key: 'leg',
-    className: 'hero-callout hero-callout--leg hero-callout--flip hero-callout--dark',
-    lines: ['Hip range you can', 'actually use'],
-  },
-]
+// The source photograph is 1000px wide, so these are the only two real steps.
+const SIZES = '100vw'
+const SRCSET = (ext: string) => `/hero-lakeside-640.${ext} 640w, /hero-lakeside-1000.${ext} 1000w`
 
 export default function HeroSection() {
   return (
-    <section className="hero-v2" aria-labelledby="hero-heading">
-      <div
-        className="hero-subject"
-        style={{ '--hero-subject-src': SUBJECT_SRC } as CSSProperties}
-        aria-hidden="true"
+    <section className="hero-photo" aria-labelledby="hero-heading">
+      {/* Hero is the LCP element. */}
+      <link
+        rel="preload"
+        as="image"
+        href="/hero-lakeside-1000.avif"
+        type="image/avif"
+        imageSrcSet={SRCSET('avif')}
+        imageSizes={SIZES}
+        fetchPriority="high"
       />
 
-      <div className="hero-callouts" aria-hidden="true">
-        {callouts.map((c) => (
-          <div className={c.className} key={c.key}>
-            <span className="dot" />
-            <span className="leader" />
-            <span className="label">
-              {c.lines[0]}
-              <br />
-              {c.lines[1]}
-            </span>
-          </div>
-        ))}
-      </div>
+      <picture>
+        <source type="image/avif" srcSet={SRCSET('avif')} sizes={SIZES} />
+        <source type="image/webp" srcSet={SRCSET('webp')} sizes={SIZES} />
+        <img
+          className="hero-img"
+          src="/hero-lakeside-1000.jpg"
+          srcSet={SRCSET('jpg')}
+          sizes={SIZES}
+          width={1000}
+          height={563}
+          fetchPriority="high"
+          decoding="async"
+          alt="A woman stretching in a seated side bend on the shore of a lake at sunrise."
+        />
+      </picture>
 
-      <div className="hero-inner">
+      <div className="hero-grid">
         <div className="hero-copy">
+          <p className="hero-eyebrow">Custom 4-week training programs</p>
           <h1 id="hero-heading">
-            <span>Release.</span>
-            <span>Restore.</span>
-            <span className="hero-line-last">
-              Rebuild.
-              <span className="hero-icon-cluster" aria-hidden="true">
-                <span className="glass glass--circle"><Waves strokeWidth={1.5} /></span>
-                <span className="glass glass--circle"><Sparkles strokeWidth={1.5} /></span>
-                <span className="glass glass--circle"><HeartPulse strokeWidth={1.5} /></span>
-                <span className="glass glass--circle"><Dumbbell strokeWidth={1.5} /></span>
-              </span>
-            </span>
+            A four-week program
+            <br />
+            built on your own <em>proof</em>,
+            <br />
+            not on a template.
           </h1>
-
-          <p className="hero-sub">
+          <p className="hero-body">
             Mobility and stretching come first. Strength, recovery, and personal training
             get added when they support how your body actually moves.
           </p>
-
-          <form className="hero-capture glass glass--pill" action="/fit" method="get">
-            <label className="sr-only" htmlFor="hero-email">Email address</label>
-            <input
-              id="hero-email"
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              autoComplete="email"
-            />
-            <button type="submit">
-              Start the fit check <ArrowRight size={16} />
-            </button>
-          </form>
-
-          <div className="hero-trust">
-            <span className="hero-avatars" aria-hidden="true">
-              <span>A</span>
-              <span>M</span>
-              <span>J</span>
-              <span>K</span>
-            </span>
-            <p>
-              Now booking the first <strong>25</strong> founding clients
-            </p>
+          <div className="hero-ctas">
+            <Link href="/fit" className="hero-cta-primary">
+              Book a mobility fit check <span aria-hidden="true">→</span>
+            </Link>
+            <a href="#services" className="hero-cta-secondary">
+              See the services <span aria-hidden="true">↓</span>
+            </a>
           </div>
+          <p className="hero-microcopy">A quick fit check first. No card required.</p>
+        </div>
+
+        <div className="hero-card-plate">
+          <Scorecard />
         </div>
       </div>
     </section>

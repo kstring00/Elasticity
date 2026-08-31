@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Fraunces, Karla, JetBrains_Mono } from 'next/font/google'
+import { Newsreader, Inter, JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
 import MotionEnhancer from './components/MotionEnhancer'
 import SiteHeader from './components/SiteHeader'
@@ -11,8 +11,8 @@ import './cognac-refresh.css'
 import './feminine-refresh.css'
 import './hero-nav-restyle.css'
 
-const display = Fraunces({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400', '500', '600', '700'] })
-const sans = Karla({ subsets: ['latin'], display: 'swap', variable: '--font-sans', weight: ['400', '500', '600', '700'] })
+const serif = Newsreader({ subsets: ['latin'], display: 'swap', variable: '--font-serif', weight: ['400', '500', '600'], style: ['normal', 'italic'] })
+const ui = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-ui', weight: ['400', '500', '600'] })
 const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono', weight: ['400', '500', '700'] })
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${serif.variable} ${ui.variable} ${mono.variable}`}>
       <body>
         <MotionEnhancer />
         <div className="site-shell">
