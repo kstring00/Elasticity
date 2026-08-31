@@ -89,7 +89,7 @@ body {
   gap: 8px;
   margin-right: auto;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
@@ -113,7 +113,7 @@ body {
 
 .site-header .launch-nav a {
   font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0 !important;
   text-transform: none !important;
@@ -199,7 +199,7 @@ body {
 .hero-eyebrow {
   margin: 0 0 18px;
   font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -209,7 +209,7 @@ body {
 .hero-photo h1 {
   margin: 0;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(38px, 3.4vw, 52px);
+  font-size: clamp(34px, 3.05vw, 46px);
   font-weight: 400;
   line-height: 1.22;
   letter-spacing: -0.01em;
@@ -226,8 +226,8 @@ body {
   margin: 28px 0 0;
   max-width: 50ch;
   font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 15px;
-  line-height: 1.62;
+  font-size: 14px;
+  line-height: 1.64;
   /* --ink-muted misses 4.5:1 over the photo; darkened per the contrast pass. */
   color: #453B34;
 }
@@ -245,7 +245,7 @@ body {
   border-radius: 8px;
   background: var(--terracotta);
   color: #fff !important;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   border: 0 !important;
   box-shadow: none !important;
@@ -259,7 +259,7 @@ body {
 
 .hero-cta-secondary {
   color: var(--ink);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(200, 127, 98, 0.4);
@@ -271,7 +271,7 @@ body {
 .hero-microcopy {
   margin: 16px 0 0;
   font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 13px;
+  font-size: 12.5px;
   /* Sampled against the rendered photo: plain --ink-muted at 75% opacity
      misses 4.5:1 over the bright band, so this is darkened instead of
      thickening the scrim. */
@@ -298,7 +298,7 @@ body {
 .scorecard-title {
   margin: 0 0 14px;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -312,7 +312,7 @@ body {
 
 .scorecard thead th {
   background: rgba(200, 127, 98, 0.09);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -324,9 +324,9 @@ body {
 .scorecard thead th + th { text-align: center; }
 
 .scorecard tbody td {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--ink);
-  padding: 13px 10px;
+  padding: 12px 10px;
   border-bottom: 1px solid var(--hairline);
 }
 
@@ -352,7 +352,7 @@ body {
 .scorecard-foot {
   margin: 14px 0 0;
   text-align: center;
-  font-size: 12px;
+  font-size: 11.5px;
   color: rgba(90, 79, 71, 0.8);
 }
 
@@ -424,7 +424,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .hero-photo h1 { font-size: 32px; }
+  .hero-photo h1 { font-size: 29px; }
 
   .hero-ctas {
     flex-direction: column;
