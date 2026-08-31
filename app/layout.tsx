@@ -35,7 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <p>Release. Restore. Rebuild. Mobility-first coaching with room to move, recover, and grow.</p>
             </div>
             <div className="footer-links">
-              <Link href="/#how-it-works">Services</Link>
+              <Link href="/#services">Services</Link>
               <Link href="/#testimonials">Testimonials</Link>
               <Link href="/#pricing">Pricing</Link>
               <Link href="/#about">About</Link>

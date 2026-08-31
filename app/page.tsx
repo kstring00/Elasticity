@@ -228,7 +228,7 @@ export default function Home() {
         <CoachPortrait />
         <div>
           <div className="section-label">About the coach</div>
-          <h2>I'm Abrielle.</h2>
+          <h2>I&apos;m Abrielle.</h2>
           <p className="about-signature">Release. Restore. Rebuild.</p>
           <p>Mobility and stretching are the heart of how I coach. I want people to feel more capable in their bodies, create space where things feel restricted, and build strength from a better foundation.</p>
           <p>I also offer personal training, meal-plan support within my certification, and select in-person sessions. If you are coming out of rehabilitation, I work after medical or PT clearance — not in place of it.</p>
