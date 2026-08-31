@@ -1,0 +1,672 @@
+/* Warm photographic hero + frosted nav.
+   Imported last so it wins over the earlier visual layers. */
+
+:root {
+  --ink: #2E2622;
+  --ink-muted: #5A4F47;
+  --terracotta: #C87F62;
+  --terracotta-deep: #B26B4E;
+  /* Terracotta as *text* only ever hits ~2.1:1 on cream, so accent copy uses
+     this darkened tone. Fills and borders keep the lighter --terracotta. */
+  --terracotta-text: #8C4526;
+  --cream: #FBF6F1;
+  --card: rgba(253, 248, 244, 0.93);
+  --hairline: rgba(46, 38, 34, 0.10);
+
+  /* The rest of the site still asks for these two names. */
+  --font-display: var(--font-serif);
+  --font-sans: var(--font-ui);
+
+  --nav-h: 72px;
+  --shell-inset: 12px;
+  --shell-radius: 16px;
+}
+
+/* ---------------------------------------------------------------
+   1. Page shell
+   --------------------------------------------------------------- */
+
+body {
+  background: #EFE6DD;
+}
+
+.site-shell {
+  /* Flush to the viewport top so the sticky nav seals against it — nothing
+     scrolls through a gutter above the bar. The inset and rounding stay on
+     the other three sides. */
+  margin: 0 var(--shell-inset) var(--shell-inset);
+  border-radius: 0 0 var(--shell-radius) var(--shell-radius);
+  background: var(--cream);
+  box-shadow: 0 18px 50px rgba(46, 38, 34, 0.13);
+  min-height: calc(100vh - var(--shell-inset));
+  /* clip, not hidden: `overflow: hidden` would make the shell a scroll
+     container and kill the sticky nav. */
+  overflow: hidden;
+  overflow: clip;
+}
+
+@media (max-width: 900px) {
+  :root { --shell-inset: 0px; }
+
+  body { background: var(--cream); }
+
+  .site-shell {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+  }
+}
+
+/* ---------------------------------------------------------------
+   2. Nav
+   --------------------------------------------------------------- */
+
+.site-header.launch-header {
+  height: var(--nav-h);
+  padding: 0 clamp(18px, 3.4vw, 40px);
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 250, 246, 0.92) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .site-header.launch-header {
+    background: rgba(255, 250, 246, 0.72) !important;
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+  }
+}
+
+.site-header .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--terracotta) !important;
+  white-space: nowrap;
+}
+
+.site-header .wordmark .caret {
+  font-size: 1.15em;
+  line-height: 1;
+  letter-spacing: 0;
+  transform: translateY(-1px);
+}
+
+.site-header .launch-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.2vw, 30px);
+}
+
+.site-header .launch-nav a {
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  padding: 0;
+  border-radius: 0;
+  color: var(--ink-muted) !important;
+  background: none !important;
+  transition: color .15s ease;
+}
+
+.site-header .launch-nav a:hover { color: var(--ink) !important; }
+
+.site-header .launch-nav .nav-cta {
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: 0 !important;
+  background: var(--terracotta) !important;
+  color: #fff !important;
+  font-weight: 500;
+  transition: background .15s ease;
+}
+
+.site-header .launch-nav .nav-cta:hover {
+  background: var(--terracotta-deep) !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------------------
+   3. Hero
+   --------------------------------------------------------------- */
+
+.hero-photo {
+  position: relative;
+  isolation: isolate;
+  /* Slide up under the sticky nav so the bar sits on the photo. */
+  margin-top: calc(var(--nav-h) * -1);
+  padding: calc(var(--nav-h) + 40px) 0 40px;
+  min-height: calc(clamp(600px, 72vh, 760px) + var(--nav-h));
+  display: flex;
+  align-items: center;
+  background: var(--cream);
+}
+
+.hero-photo picture,
+.hero-photo .hero-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Legibility scrim over the left third. */
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(100deg,
+    rgba(255, 247, 240, 0.86) 0%,
+    rgba(255, 247, 240, 0.74) 32%,
+    rgba(255, 247, 240, 0.58) 46%,
+    rgba(255, 247, 240, 0.00) 68%);
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(32px, 5vw, 72px);
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.hero-copy { max-width: 560px; }
+
+.hero-eyebrow {
+  margin: 0 0 18px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracotta-text);
+}
+
+.hero-photo h1 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(34px, 3.05vw, 46px);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.hero-photo h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--terracotta);
+}
+
+.hero-body {
+  margin: 28px 0 0;
+  max-width: 50ch;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.64;
+  /* --ink-muted misses 4.5:1 over the photo; darkened per the contrast pass. */
+  color: #453B34;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  margin-top: 40px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+}
+
+.hero-cta-primary {
+  padding: 15px 28px;
+  border-radius: 8px;
+  background: var(--terracotta);
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 500;
+  border: 0 !important;
+  box-shadow: none !important;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.hero-cta-primary:hover {
+  background: var(--terracotta-deep);
+  transform: translateY(-1px);
+}
+
+.hero-cta-secondary {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(200, 127, 98, 0.4);
+  transition: border-color .15s ease;
+}
+
+.hero-cta-secondary:hover { border-bottom-color: var(--terracotta); }
+
+.hero-microcopy {
+  margin: 16px 0 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 12.5px;
+  /* Sampled against the rendered photo: plain --ink-muted at 75% opacity
+     misses 4.5:1 over the bright band, so this is darkened instead of
+     thickening the scrim. */
+  color: #3F362F;
+}
+
+/* ---------------------------------------------------------------
+   4. Scorecard
+   --------------------------------------------------------------- */
+
+.hero-card-plate { flex: 0 0 auto; }
+
+.scorecard {
+  width: 360px;
+  padding: 20px 18px;
+  border-radius: 12px;
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 40px rgba(46, 38, 34, 0.13);
+  font-family: var(--font-ui), system-ui, sans-serif;
+}
+
+.scorecard-title {
+  margin: 0 0 14px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta-text);
+}
+
+.scorecard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scorecard thead th {
+  background: rgba(200, 127, 98, 0.09);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 9px 10px;
+}
+
+.scorecard thead th:first-child { text-align: left; }
+.scorecard thead th + th { text-align: center; }
+
+.scorecard tbody td {
+  font-size: 13px;
+  color: var(--ink);
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.scorecard tbody tr:last-child td { border-bottom: 0; }
+
+.scorecard .week1 {
+  text-align: center;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.scorecard .week4 {
+  text-align: center;
+  font-weight: 600;
+  color: var(--terracotta-text);
+}
+
+.scorecard .week4 .rise {
+  font-size: 0.85em;
+  margin-left: 3px;
+}
+
+.scorecard-foot {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 11.5px;
+  color: rgba(90, 79, 71, 0.8);
+}
+
+/* ---------------------------------------------------------------
+   5. Responsive
+   --------------------------------------------------------------- */
+
+/* The earlier layers hide every nav link below 900px; the CTA has to stay. */
+@media (max-width: 900px) {
+  .site-header .launch-nav .nav-cta { display: inline-block !important; }
+  .site-header .launch-nav a:not(.nav-cta) { display: none; }
+}
+
+@media (max-width: 1100px) {
+  .hero-photo { min-height: calc(560px + var(--nav-h)); }
+  .scorecard { width: 320px; }
+}
+
+@media (max-width: 900px) {
+  .hero-photo {
+    display: block;
+    padding-bottom: 0;
+    min-height: 0;
+    background: var(--cream);
+  }
+
+  /* Subject sits low in the frame at this width, so the scrim runs top-down. */
+  .hero-photo::before {
+    bottom: auto;
+    height: 100%;
+    background: linear-gradient(180deg,
+      rgba(255, 247, 240, 0.80) 0%,
+      rgba(255, 247, 240, 0.55) 46%,
+      rgba(255, 247, 240, 0.00) 88%);
+  }
+
+  .hero-photo picture,
+  .hero-photo .hero-img { height: 100%; }
+
+  .hero-grid {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+
+  .hero-copy {
+    max-width: none;
+    padding: 0 6vw 56px;
+  }
+
+  .scorecard {
+    position: relative;
+    z-index: 2;
+    width: auto;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 18px 24px;
+  }
+
+  /* Cream plate behind the card so it never sits on the photo. */
+  .hero-photo .hero-card-plate {
+    position: relative;
+    z-index: 2;
+    background: var(--cream);
+    padding: 28px 6vw 36px;
+    margin-top: -1px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-photo h1 { font-size: 29px; }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .hero-cta-primary { text-align: center; }
+  .hero-cta-secondary { align-self: flex-start; }
+  .scorecard { padding: 16px 12px 20px; }
+  .scorecard tbody td { padding: 12px 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta-primary,
+  .hero-cta-primary:hover,
+  .site-header .launch-nav .nav-cta {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Visually hidden, still announced. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------
+   6. Services
+   --------------------------------------------------------------- */
+
+.svc-section {
+  padding: clamp(64px, 8vw, 104px) clamp(20px, 5vw, 64px);
+  max-width: 1240px;
+  margin: 0 auto;
+  background: var(--cream);
+}
+
+.svc-head { margin-bottom: clamp(28px, 3.4vw, 44px); }
+
+.svc-eyebrow {
+  margin: 0 0 14px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracotta-text) !important;
+}
+
+.svc-section h2 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(30px, 2.9vw, 44px);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink) !important;
+}
+
+.svc-section h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--terracotta);
+}
+
+.svc-lede {
+  margin: 16px 0 0;
+  max-width: 58ch;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.64;
+  color: var(--ink-muted);
+}
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.svc-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 300px;
+  padding: 26px 28px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--hairline);
+  background: var(--card-tint, #F7F1EA);
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Per-card tints and art colours. */
+.svc-card--mobility  { --card-tint: #FBF0F1; --art-fill: rgba(200,127,98,0.10); --art-line: rgba(178,107,78,0.30); --art-solid: rgba(178,107,78,0.16); }
+.svc-card--recovery  { --card-tint: #F6F2E9; --art-fill: rgba(140,138,106,0.20); --art-line: rgba(110,108,84,0.28); --art-solid: rgba(110,108,84,0.16); }
+.svc-card--nutrition { --card-tint: #F6F1E8; --art-fill: rgba(200,127,98,0.11); --art-line: rgba(140,69,38,0.26); --art-solid: rgba(140,69,38,0.16); }
+.svc-card--training  { --card-tint: #F9EEEE; --art-fill: rgba(160,104,110,0.12); --art-line: rgba(130,80,86,0.26); --art-solid: rgba(130,80,86,0.22); }
+
+.svc-art {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: 58%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.svc-art svg { width: 100%; height: 100%; display: block; }
+.svc-art .art-fill { fill: var(--art-fill); }
+.svc-art .art-fill-soft { fill: var(--art-fill); opacity: 0.7; }
+.svc-art .art-solid { fill: var(--art-solid); }
+.svc-art .art-line { stroke: var(--art-line); stroke-width: 1.25; }
+
+/* Keeps the copy readable where the art runs under it. */
+.svc-card::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(96deg, var(--card-tint) 30%, rgba(255, 255, 255, 0) 74%);
+}
+
+.svc-body {
+  position: relative;
+  z-index: 2;
+  max-width: 30ch;
+}
+
+.svc-index {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--terracotta-text);
+}
+
+.svc-card h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(22px, 1.8vw, 27px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--ink) !important;
+}
+
+.svc-card p {
+  margin: 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--terracotta-text) !important;
+  transition: gap .15s ease;
+}
+
+.svc-link:hover { gap: 12px; }
+
+.svc-note {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 34px);
+  margin-top: 20px;
+  padding: 20px 28px;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: transparent;
+}
+
+.svc-note-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  padding-right: clamp(16px, 3vw, 34px);
+  border-right: 1px solid var(--hairline);
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta-text);
+}
+
+.svc-note-label svg { stroke-width: 1.6; }
+
+.svc-note p {
+  margin: 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 900px) {
+  .svc-grid { grid-template-columns: minmax(0, 1fr); }
+  .svc-card { min-height: 250px; }
+  .svc-art { width: 52%; }
+
+  .svc-note {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .svc-note-label {
+    padding-right: 0;
+    border-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .svc-card { padding: 22px 20px 24px; min-height: 0; }
+  .svc-body { max-width: none; }
+  .svc-art { width: 62%; opacity: 0.85; }
+  .svc-card::after { background: linear-gradient(150deg, var(--card-tint) 42%, rgba(255, 255, 255, 0) 96%); }
+}

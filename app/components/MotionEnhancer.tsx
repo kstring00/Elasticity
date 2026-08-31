@@ -4,7 +4,8 @@ import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 const SELECTOR = [
-  '.launch-home > section:not(.launch-hero)',
+  // the hero holds the LCP image; never fade it in
+  '.launch-home > section:not(.hero-photo)',
   '.fit-page .fit-card',
   '.plan-page section',
   '.legal-page section',

@@ -99,13 +99,6 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 }
 .button-secondary:hover { background: var(--rose-soft) !important; }
 
-/* Hero photo stays, but mood becomes restorative. */
-.home-hero-composite::after {
-  background:
-    linear-gradient(90deg, rgba(251,244,245,.94) 0%, rgba(251,244,245,.83) 33%, rgba(251,244,245,.58) 57%, rgba(233,195,201,.24) 78%, rgba(251,244,245,.10) 100%),
-    linear-gradient(0deg, rgba(251,244,245,.18), rgba(255,255,255,.02) 52%, rgba(251,244,245,.10)) !important;
-}
-
 .launch-home > .launch-hero:first-child {
   background: transparent !important;
   align-items: center;
@@ -346,9 +339,6 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 }
 
 @media (max-width: 760px) {
-  .home-hero-composite::after {
-    background:linear-gradient(180deg,rgba(251,244,245,.88),rgba(251,244,245,.70) 48%,rgba(251,244,245,.94)) !important;
-  }
   .hero-rhythm { font-size:clamp(3.3rem,17vw,5.2rem) !important; }
   .hero-rhythm span:nth-child(2),.hero-rhythm span:nth-child(3) { transform:none; }
   .launch-nav a:not(.nav-fit) { display:none; }

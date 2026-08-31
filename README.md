@@ -37,3 +37,10 @@ The database migration is in `supabase/migrations/20260830_init_elasticity.sql`.
 ## Security
 
 Never commit Stripe secrets, Supabase service-role keys, webhook signing secrets, or client data. Public browser access uses the Supabase publishable key and is protected by RLS.
+
+
+## Hero image
+
+The home hero uses `public/hero-lakeside-{640,1000}.{avif,webp,jpg}`, generated
+from the source photograph. The source is 1000px wide, so 1000w is the largest
+real step; regenerate all six files if a higher-resolution original arrives.
