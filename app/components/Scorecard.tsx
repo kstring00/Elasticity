@@ -45,21 +45,22 @@ export default function Scorecard() {
 
   return (
     <div className="scorecard-shell" ref={ref} aria-label="Week 1 to Week 4 progress scorecard preview">
-      <div className="scorecard-head">
-        <span>El^sticity progress scorecard</span>
-        <strong>Week 1 → Week 4</strong>
-      </div>
-      <div className="scorecard-grid scorecard-labels">
-        <span>Movement</span><span>Week 1</span><span>Week 4</span>
-      </div>
-      {SCORECARD_ROWS.map(([name, week1, week4], i) => (
-        <div className="scorecard-grid" key={name}>
-          <strong>{name}</strong>
-          <span className="num week1">{week1}</span>
-          <span className={`num week4${i < revealed ? ' is-in' : ''}`} data-instant={instant ? '' : undefined}>{week4}</span>
-        </div>
-      ))}
-      <div className="scorecard-foot">Track the starting point. Revisit it. See what changed.</div>
+      <div className="scorecard-title">Elasticity progress scorecard</div>
+      <table className="scorecard-table">
+        <thead>
+          <tr><th>Movement</th><th>Week 1</th><th>Week 4</th></tr>
+        </thead>
+        <tbody>
+          {SCORECARD_ROWS.map(([name, week1, week4], i) => (
+            <tr key={name}>
+              <td>{name}</td>
+              <td className="week1">{week1}</td>
+              <td className={`week4${i < revealed ? ' is-in' : ''}`} data-instant={instant ? '' : undefined}>{week4}<span aria-hidden="true"> ↑</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="scorecard-foot">The promise is measurement, not a dramatic 28-day photo.</div>
     </div>
   )
 }
