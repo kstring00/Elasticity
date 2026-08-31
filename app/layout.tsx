@@ -11,6 +11,7 @@ import './cognac-refresh.css'
 import './hero-insert.css'
 import './feminine-refresh.css'
 import './editorial-hero.css'
+import './services-showcase.css'
 
 const display = Newsreader({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400'], style: ['normal', 'italic'] })
 const sans = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-sans', weight: ['400', '500', '600'] })
