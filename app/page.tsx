@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Check, CircleCheck, Clock3, Dumbbell, Gauge, Instagram, RefreshCw } from 'lucide-react'
+import { ArrowRight, Check, CircleCheck, Clock3, Dumbbell, Gauge, Instagram, Play, RefreshCw, Sparkles } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import Scorecard from './components/Scorecard'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
@@ -17,23 +17,23 @@ const sampleDay = [
 ]
 
 const weeks = [
-  ['01', 'Establish', 'Big compound movers set your starting loads. Nothing is maxed. You write the numbers down.'],
-  ['02', 'Support', 'Accessory and symmetry work strengthens the muscles that support the lifts from Week 1.'],
-  ['03', 'Control', 'Single-side work, stability, and anti-rotation training expose and address left-right differences.'],
-  ['04', 'Re-test', 'Week 1 lifts return so you can compare what changed instead of guessing whether the month worked.'],
+  ['01', 'Release', 'Create room to move. Mobility, stretching, and controlled preparation help you start from where your body actually is.'],
+  ['02', 'Restore', 'Build better movement quality, supporting strength, range, and confidence without forcing progress before your body is ready.'],
+  ['03', 'Rebuild', 'Layer in intentional strength, control, and personalized training around your goals, schedule, and current ability.'],
+  ['04', 'Re-test', 'Bring key movements back, compare what changed, and use real feedback to decide what comes next.'],
 ]
 
 const faq = [
-  ['What am I actually buying?', 'A custom four-week training program with a structured warm-up, exercise tables with sets, reps and rest, progression guidance, weekly check-in prompts, and a Week 1 vs. Week 4 progress scorecard.'],
-  ['Do I need a gym?', 'The sample program shown here assumes a commercial gym. The fit check asks where you train before checkout so equipment access can be reviewed honestly before you buy.'],
-  ['I am a beginner. Is this too advanced?', 'Starting loads are selected conservatively and the program does not ask you to train to failure. Tell the coach your real experience level in the fit check and intake so the prescription can match it.'],
-  ['What if I miss a workout?', 'You do not cram missed sessions into the next day. Four out of five workouts can still be a successful week. Resume the schedule instead of trying to punish yourself for a miss.'],
-  ['Will I lose weight?', "Elasticity does not promise a specific scale or visual outcome in four weeks. You'll finish with numbers you can compare."],
-  ['Do I have to send progress photos?', 'No. Progress photos are not required. The core progress mechanic is the Week 1 vs. Week 4 scorecard.'],
+  ['What am I actually buying?', 'A custom four-week plan shaped around your goals, schedule, training history, equipment, mobility needs, and current starting point. Your plan can include mobility, stretching, strength work, conditioning, progress tracking, and coach guidance depending on the service selected.'],
+  ['Do I need a gym?', 'No. The fit check asks where you train so the plan can match your real setup. Abrielle can also offer in-person training in select situations, including gym access with her or special-case home sessions.'],
+  ['Is mobility the main focus?', 'Yes. Mobility, stretching, movement quality, and helping you feel better in your body are central to Elasticity. Personalized training is also available and can be layered in around that foundation.'],
+  ['Can you help with a meal plan?', 'Yes. Abrielle is certified to provide meal-plan support within her scope. Your exact nutrition needs can be discussed during onboarding so the service matches what you are actually looking for.'],
+  ['I am a beginner. Is this too advanced?', 'No. The fit check and intake are designed to capture your real experience level so the prescription can start where you are instead of where someone else thinks you should be.'],
+  ['Do I have to send progress photos?', 'No. Progress photos are optional. Progress can also be measured through movement quality, consistency, strength numbers, energy, range of motion, and how the work feels over time.'],
   ['How fast do I get my program?', 'The launch target is delivery within 72 hours after the full intake is submitted.'],
   ['Can I ask questions while I run it?', 'The Build includes one revision window. The guided option adds structured weekly check-ins and written coach feedback.'],
-  ['What happens after four weeks?', 'Month one is a starting block, not a finish line. Your Week 4 numbers can be used to build the next block instead of starting over from guesses.'],
-  ['What if the plan does not fit what I submitted?', 'If the equipment, schedule, or training level does not match your submitted intake, request a revision within seven days. The launch policy includes one rebuild at no additional charge.'],
+  ['What happens after four weeks?', 'Month one is a starting block, not a finish line. Your Week 4 feedback can be used to build the next block without starting over from guesses.'],
+  ['What if the plan does not fit what I submitted?', 'If the schedule, equipment, or training level does not reflect your submitted intake, request a revision within seven days. One rebuild is included at no additional charge.'],
 ]
 
 function PricingCards() {
@@ -43,18 +43,18 @@ function PricingCards() {
         <div className="price-kicker">Founding client</div>
         <h3>The Build</h3>
         <div className="launch-price"><span>$149</span><strong>$99</strong></div>
-        <p>A complete custom four-week program you can run independently.</p>
+        <p>A complete custom four-week plan you can run independently.</p>
         <ul>
-          <li><Check size={15}/>Custom four-week program</li>
+          <li><Check size={15}/>Mobility + training built around you</li>
           <li><Check size={15}/>Sets, reps, rest, warm-up and progression rules</li>
-          <li><Check size={15}/>Week 1 vs. Week 4 progress scorecard</li>
+          <li><Check size={15}/>Week 1 vs. Week 4 progress tracking</li>
           <li><Check size={15}/>One revision within seven days</li>
         </ul>
         <Link href="/fit" className="button-primary">Start with the fit check <ArrowRight size={15}/></Link>
       </article>
 
       <article className="launch-price-card featured">
-        <div className="price-kicker">My recommendation.</div>
+        <div className="price-kicker">My recommendation</div>
         <h3>The Build + Check-Ins</h3>
         <div className="launch-price"><span>$229</span><strong>$149</strong></div>
         <p>The same custom build, plus a weekly feedback loop with your coach.</p>
@@ -71,7 +71,7 @@ function PricingCards() {
         <div className="price-kicker">Longer runway</div>
         <h3>12-Week Progression</h3>
         <div className="launch-price single"><strong>$549</strong></div>
-        <p>Three consecutive builds, each informed by the numbers from the block before it.</p>
+        <p>Three consecutive builds, each informed by what your body and numbers showed in the block before it.</p>
         <ul>
           <li><Check size={15}/>Three four-week programs</li>
           <li><Check size={15}/>Weekly check-ins throughout</li>
@@ -89,12 +89,13 @@ export default function Home() {
     <main className="launch-home">
       <section className="launch-hero">
         <div className="launch-hero-copy">
-          <div className="eyebrow">Custom 4-week training programs</div>
-          <h1>After four weeks, you'll have <em>proof</em> — not a feeling.</h1>
-          <p className="launch-lead">Most people train for months without knowing whether it is working. Elasticity gives the month a structure, records the starting point, and brings key movements back in Week 4 so progress can be compared instead of guessed.</p>
+          <div className="eyebrow">Mobility-first coaching + personalized training</div>
+          <div className="hero-script">Release. Restore. Rebuild.</div>
+          <h1>Feel better in your body — then build from there.</h1>
+          <p className="launch-lead">Elasticity begins with movement: mobility, stretching, range, control, and the way your body actually feels. Training is personalized around that foundation so progress feels intentional, not random.</p>
           <div className="launch-actions">
             <Link href="/fit" className="button-primary">Take the 90-second fit check <ArrowRight size={15}/></Link>
-            <a href="#sample-week" className="launch-text-link">See a real training day ↓</a>
+            <a href="#testimonials" className="launch-text-link">See client stories ↓</a>
           </div>
           <p className="trust-line">Free, no card. You see the price before you buy.</p>
         </div>
@@ -102,28 +103,43 @@ export default function Home() {
         <Scorecard />
       </section>
 
-      <section className="launch-pain section-narrow">
-        <div className="eyebrow">The problem is usually not effort</div>
-        <h2>You are putting in work. What is missing is structure.</h2>
-        <div className="pain-grid">
-          <article><Dumbbell size={20}/><h3>You keep going.</h3><p>Three or four days a week can still feel random when there is no progression to follow.</p></article>
-          <article><RefreshCw size={20}/><h3>You repeat what is familiar.</h3><p>The same machines become a habit, but a habit is not automatically a program.</p></article>
-          <article><Gauge size={20}/><h3>You cannot prove what changed.</h3><p>If you never record the starting numbers, there is nothing objective to compare a month later.</p></article>
+      <section className="core-message section-narrow" aria-label="Elasticity core message">
+        <div className="core-orbit" aria-hidden="true"><Sparkles size={18}/></div>
+        <div className="eyebrow">The heart behind Elasticity</div>
+        <div className="core-words">
+          <span>Release.</span>
+          <span>Restore.</span>
+          <span>Rebuild.</span>
         </div>
-        <p className="pain-pivot">That's what I build around: <strong>measurement, with a plan behind it.</strong></p>
+        <div className="scripture-block">
+          <span>Isaiah 54:2</span>
+          <p>“Enlarge the place of your tent.”</p>
+          <small>Make room. Stretch wider. Strengthen what supports you.</small>
+        </div>
+      </section>
+
+      <section className="launch-pain section-narrow">
+        <div className="eyebrow">Movement before punishment</div>
+        <h2>You do not need to fight your body to make progress.</h2>
+        <div className="pain-grid">
+          <article><RefreshCw size={20}/><h3>Release tension.</h3><p>Create space through mobility, stretching, and movement that meets you where you are.</p></article>
+          <article><CircleCheck size={20}/><h3>Restore confidence.</h3><p>Build range, control, consistency, and a better relationship with how your body moves.</p></article>
+          <article><Dumbbell size={20}/><h3>Rebuild strength.</h3><p>Add personalized training with intention instead of stacking random workouts on top of restriction.</p></article>
+        </div>
+        <p className="pain-pivot">That is the Elasticity approach: <strong>move better, feel better, then build stronger.</strong></p>
       </section>
 
       <section className="launch-deliverable section-narrow" id="how-it-works">
         <div className="launch-section-head">
-          <div className="eyebrow">THE DELIVERABLE</div>
-          <h2>What lands in your inbox</h2>
-          <p>A four-week program written for your schedule and your gym, with the reasoning included — not a one-page exercise list.</p>
+          <div className="eyebrow">What your plan can include</div>
+          <h2>Built for the body you have today.</h2>
+          <p>Your intake gives Abrielle the context to shape the right mix of mobility, stretching, strength, conditioning, and support for you.</p>
         </div>
         <div className="deliverable-grid">
-          <article><Clock3 size={18}/><div><strong>A structured four-week build</strong><p>Training and recovery days organized into a sequence instead of the same week printed four times.</p></div></article>
-          <article><Gauge size={18}/><div><strong>RPE and progression rules</strong><p>Start with controlled effort, leave good reps in reserve, and add load only when the rep range is earned.</p></div></article>
-          <article><Dumbbell size={18}/><div><strong>Exact exercise prescriptions</strong><p>Sets, reps, rest windows, and notes make the training usable on the gym floor.</p></div></article>
-          <article><CircleCheck size={18}/><div><strong>Weekly reflection</strong><p>Completion, energy, difficulty, and anything that felt off become part of the next decision.</p></div></article>
+          <article><RefreshCw size={18}/><div><strong>Mobility + stretching</strong><p>Intentional work for range, control, stiffness, and movement quality — not five random stretches before a workout.</p></div></article>
+          <article><Gauge size={18}/><div><strong>Progressive training</strong><p>Strength and conditioning can be layered in around your ability, equipment, schedule, and goals.</p></div></article>
+          <article><CircleCheck size={18}/><div><strong>Weekly reflection</strong><p>Energy, consistency, soreness, wins, challenges, and what feels different become part of the next decision.</p></div></article>
+          <article><Clock3 size={18}/><div><strong>Real-life flexibility</strong><p>Programs are designed around realistic training days and the environment you actually have access to.</p></div></article>
         </div>
       </section>
 
@@ -131,59 +147,85 @@ export default function Home() {
         <div className="launch-section-head">
           <div className="eyebrow">A real day from the program</div>
           <h2>This is a real Monday.</h2>
-          <p>Week 1, Day 1: chest, triceps, quads, then anterior core. The value is in the specificity.</p>
+          <p>One example of how specific the training can get when strength work is part of your build.</p>
         </div>
         <div className="sample-table" role="table" aria-label="Sample Monday training day">
           <div className="sample-row sample-head" role="row"><span role="columnheader">Exercise</span><span role="columnheader">Sets × reps</span><span role="columnheader">Rest</span></div>
           {sampleDay.map(([exercise, reps, rest]) => <div className="sample-row" role="row" key={exercise}><strong role="cell">{exercise}</strong><span role="cell">{reps}</span><span role="cell">{rest}</span></div>)}
         </div>
-        <div className="sample-note"><strong>Then anterior core:</strong> bench knee tucks 3 × 10–12 and ab roller 2 × 6–10. Record the key Week 1 loads so Week 4 has something real to compare against.</div>
+        <div className="sample-note"><strong>Training is only one lane.</strong> Mobility and stretching can be the center of your plan when that is what your body needs most.</div>
       </section>
 
       <section className="launch-method" id="method">
         <div className="section-narrow">
           <div className="launch-section-head">
             <div className="eyebrow">The Elasticity method</div>
-            <h2>Four weeks that actually go somewhere.</h2>
-            <p>The framework is systematic. The prescription is personal.</p>
+            <h2>Release. Restore. Rebuild.</h2>
+            <p>The framework has a rhythm. Your prescription stays personal.</p>
           </div>
           <div className="week-grid">
             {weeks.map(([number,title,copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}
           </div>
-          <div className="method-closing"><strong>Week 4 is not a finale. It is a measurement.</strong><span>Your next block starts from the numbers you earned, not from zero.</span></div>
+          <div className="method-closing"><strong>Progress is not just a heavier number.</strong><span>It can also be better range, less restriction, more control, more consistency, and feeling confident enough to keep going.</span></div>
+        </div>
+      </section>
+
+      <section className="testimonials-section section-narrow" id="testimonials">
+        <div className="launch-section-head testimonial-head">
+          <div className="eyebrow">Client stories</div>
+          <h2>Real people. Real movement. Real feedback.</h2>
+          <p>Abrielle already has client training reviews, mobility-session footage, and client-approved stories ready to live here. These cards are intentionally waiting for the real media — no fake testimonials.</p>
+        </div>
+        <div className="testimonial-grid">
+          <article className="testimonial-card">
+            <div className="testimonial-avatar">01</div>
+            <div className="testimonial-type">Training review</div>
+            <p>Client-approved quote + photo will be added here.</p>
+            <span>Written testimonial</span>
+          </article>
+          <article className="testimonial-card video-card">
+            <div className="video-preview"><Play size={28} fill="currentColor"/></div>
+            <div className="testimonial-type">Mobility session</div>
+            <p>Client mobility footage can play directly in this space.</p>
+            <span>Video testimonial / session clip</span>
+          </article>
+          <article className="testimonial-card video-card">
+            <div className="video-preview"><Play size={28} fill="currentColor"/></div>
+            <div className="testimonial-type">Client story</div>
+            <p>Training review video can live here with a short caption.</p>
+            <span>Video review</span>
+          </article>
         </div>
       </section>
 
       <section className="fit-section section-narrow">
-        <div className="launch-section-head"><div className="eyebrow">Who this is for</div><h2>Be honest before you buy.</h2></div>
+        <div className="launch-section-head"><div className="eyebrow">Who this is for</div><h2>Find the right kind of support.</h2></div>
         <div className="fit-columns">
-          <div><h3>This may fit you if:</h3><ul><li>You can identify realistic training days each week</li><li>You have trained before or can be honest about being new</li><li>You want structure and progression more than a quick scale promise</li><li>You are willing to record what you actually did</li></ul></div>
-          <div><h3>This is not the right fit if:</h3><ul><li>You are looking for a meal plan, nutrition prescription, or rehabilitation</li><li>You have an untreated issue that currently limits exercise</li><li>You expect a dramatic visual transformation in 28 days</li><li>You want in-person coaching on the gym floor</li></ul></div>
+          <div><h3>This may fit you if:</h3><ul><li>You want more mobility, flexibility, or confidence in how you move</li><li>You want training personalized around your real starting point</li><li>You value structure without an all-or-nothing mindset</li><li>You are willing to communicate honestly about what your body needs</li></ul></div>
+          <div><h3>This is not the right fit if:</h3><ul><li>You have an untreated injury or pain that needs medical evaluation first</li><li>You expect a dramatic visual transformation in 28 days</li><li>You are looking for a quick fix without participating in the process</li></ul><p className="special-case-note">In-person training is available in select situations. If you do not have a gym membership, Abrielle may be able to bring you in as a guest or arrange a special-case home session.</p></div>
         </div>
       </section>
 
       <section className="launch-pricing section-narrow" id="pricing">
-        <div className="launch-section-head"><div className="eyebrow">Founding-client launch pricing</div><h2>Pick the amount of coaching you actually want.</h2><p>Founding pricing, first 10 clients only. Prices go up after that.</p></div>
+        <div className="launch-section-head"><div className="eyebrow">Founding-client launch pricing</div><h2>Choose the amount of support you want.</h2><p>Founding pricing, first 10 clients only. Prices go up after that.</p></div>
         <PricingCards />
-        <div className="continuation-note">Already finished a month with me? Your next block is <strong>$99</strong> — I already know your numbers.</div>
+        <div className="continuation-note">Already finished a month with me? Your next block is <strong>$99</strong> — I already know your starting point.</div>
       </section>
 
       <section className="guarantee section-narrow">
         <div><div className="eyebrow">Fit guarantee</div><h2>If the plan does not match what you submitted, it gets fixed.</h2></div>
-        <p>Review the delivered program. If the schedule, equipment, or training level does not reflect your submitted intake, request a rebuild within seven days. One revision is included at no additional charge. This is a fit guarantee, not a promise of a specific body or performance result.</p>
+        <p>Review the delivered program. If the schedule, equipment, mobility needs, or training level does not reflect your submitted intake, request a rebuild within seven days. One revision is included at no additional charge.</p>
       </section>
 
       <section className="about-section section-narrow" id="about">
-        {/* CoachPortrait renders /coach.jpg. A real photo of Abrielle is REQUIRED before launch —
-            the file does not exist yet, so the monogram fallback is what ships until it is added. */}
         <CoachPortrait />
         <div>
           <div className="eyebrow">About the coach</div>
           <h2>I'm Abrielle.</h2>
-          {/* TODO: replace bracketed sections with Abrielle's own words before launch */}
-          <p>[CREDENTIALS — certification and issuing body, education, years training, years coaching. One or two sentences, plain.]</p>
-          <p>[WHY I PROGRAM THIS WAY — a specific story. A training mistake, an injury, a plateau you couldn't explain, a program that wrecked you. This is the paragraph people remember. 3–5 sentences.]</p>
-          <p>I program training. I'm not a dietitian and I don't write meal plans, and I don't do rehab. If you need either, I'll tell you who to talk to.</p>
+          <p className="about-signature">Release. Restore. Rebuild.</p>
+          <p>Mobility and stretching are at the heart of how I work. I love helping people create more space, control, confidence, and freedom in the way they move — and I also build personalized training programs when strength and conditioning are part of the goal.</p>
+          <p>I am certified to provide meal-plan support within my scope, and I also offer in-person training in select situations. If you need something that falls outside what I can responsibly provide, I will be direct about that.</p>
+          <p className="about-scripture">Isaiah 54:2 is the core behind Elasticity: make room, stretch wider, and strengthen what supports you.</p>
           {hasInstagram && (
             <a className="about-instagram" href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener">
               <Instagram size={16}/> Follow along on Instagram
@@ -193,7 +235,7 @@ export default function Home() {
       </section>
 
       <section className="faq-section section-narrow" id="faq">
-        <div className="launch-section-head"><div className="eyebrow">Questions before you start</div><h2>Know what you are buying.</h2></div>
+        <div className="launch-section-head"><div className="eyebrow">Questions before you start</div><h2>Know what support you are choosing.</h2></div>
         <div className="faq-list">{faq.map(([q,a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div>
       </section>
 
