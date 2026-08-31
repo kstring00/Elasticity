@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Fraunces, Karla, JetBrains_Mono } from 'next/font/google'
+import { Inter, Newsreader } from 'next/font/google'
 import Link from 'next/link'
 import MotionEnhancer from './components/MotionEnhancer'
 import HomeHeroComposite from './components/HomeHeroComposite'
@@ -10,36 +10,37 @@ import './launch.css'
 import './cognac-refresh.css'
 import './hero-insert.css'
 import './feminine-refresh.css'
+import './editorial-hero.css'
 
-const display = Fraunces({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400', '500', '600', '700'] })
-const sans = Karla({ subsets: ['latin'], display: 'swap', variable: '--font-sans', weight: ['400', '500', '600', '700'] })
-const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono', weight: ['400', '500', '700'] })
+const display = Newsreader({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400'], style: ['normal', 'italic'] })
+const sans = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-sans', weight: ['400', '500', '600'] })
 
 export const metadata: Metadata = {
   title: 'Mobility, stretching & personalized training | El^sticity',
-  description: 'Mobility-first coaching, stretching, recovery, meal-plan support, and personalized training with El^sticity.',
+  description: 'Mobility-first coaching, stretching, recovery, and personalized training with El^sticity.',
   icons: { icon: '/icon.svg' },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
         <MotionEnhancer />
         <div className="site-shell">
+          <HomeHeroComposite />
           <header className="site-header launch-header">
-            <Link href="/" className="brand-lockup feminine-brand" aria-label="El^sticity home">
-              <span className="brand-word">El<span className="brand-caret">^</span>sticity</span>
+            <Link href="/" className="brand-lockup editorial-brand" aria-label="El^sticity home">
+              <span className="brand-caret" aria-hidden="true">^</span>
+              <span className="brand-word">Elasticity</span>
             </Link>
             <nav className="main-nav launch-nav" aria-label="Primary navigation">
-              <Link href="/#how-it-works">Services</Link>
+              <Link href="/#services">Services</Link>
               <Link href="/#testimonials">Testimonials</Link>
               <Link href="/#pricing">Pricing</Link>
               <Link href="/#about">About</Link>
               <Link href="/fit" className="nav-fit">Take the fit check</Link>
             </nav>
           </header>
-          <HomeHeroComposite />
           {children}
           <footer className="site-footer light-footer launch-footer">
             <div>
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <p>Release. Restore. Rebuild. Mobility-first coaching with room to move, recover, and grow.</p>
             </div>
             <div className="footer-links">
-              <Link href="/#how-it-works">Services</Link>
+              <Link href="/#services">Services</Link>
               <Link href="/#testimonials">Testimonials</Link>
               <Link href="/#pricing">Pricing</Link>
               <Link href="/#about">About</Link>
