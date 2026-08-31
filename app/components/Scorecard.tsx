@@ -29,18 +29,12 @@ export default function Scorecard() {
 
     const el = ref.current
     if (!el) return
-
     const timers: number[] = []
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting) return
-        observer.disconnect()
-        SCORECARD_ROWS.forEach((_, i) => {
-          timers.push(window.setTimeout(() => setRevealed(i + 1), i * STAGGER_MS))
-        })
-      },
-      { threshold: 0.35 },
-    )
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return
+      observer.disconnect()
+      SCORECARD_ROWS.forEach((_, i) => timers.push(window.setTimeout(() => setRevealed(i + 1), i * STAGGER_MS)))
+    }, { threshold: 0.35 })
     observer.observe(el)
 
     return () => {
@@ -52,7 +46,7 @@ export default function Scorecard() {
   return (
     <div className="scorecard-shell" ref={ref} aria-label="Week 1 to Week 4 progress scorecard preview">
       <div className="scorecard-head">
-        <span className="eyebrow">EL^STICITY progress scorecard</span>
+        <span>El^sticity progress scorecard</span>
         <strong>Week 1 → Week 4</strong>
       </div>
       <div className="scorecard-grid scorecard-labels">
@@ -62,12 +56,7 @@ export default function Scorecard() {
         <div className="scorecard-grid" key={name}>
           <strong>{name}</strong>
           <span className="num week1">{week1}</span>
-          <span
-            className={`num week4${i < revealed ? ' is-in' : ''}`}
-            data-instant={instant ? '' : undefined}
-          >
-            {week4}
-          </span>
+          <span className={`num week4${i < revealed ? ' is-in' : ''}`} data-instant={instant ? '' : undefined}>{week4}</span>
         </div>
       ))}
       <div className="scorecard-foot">Track the starting point. Revisit it. See what changed.</div>
