@@ -21,7 +21,6 @@ export default function Scorecard() {
   const [instant, setInstant] = useState(false)
 
   useEffect(() => {
-    // Reduced motion: both columns filled immediately, no observer, no animation.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setInstant(true)
       setRevealed(SCORECARD_ROWS.length)
@@ -35,7 +34,7 @@ export default function Scorecard() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries[0].isIntersecting) return
-        observer.disconnect() // fire once, never on re-scroll
+        observer.disconnect()
         SCORECARD_ROWS.forEach((_, i) => {
           timers.push(window.setTimeout(() => setRevealed(i + 1), i * STAGGER_MS))
         })
@@ -53,7 +52,7 @@ export default function Scorecard() {
   return (
     <div className="scorecard-shell" ref={ref} aria-label="Week 1 to Week 4 progress scorecard preview">
       <div className="scorecard-head">
-        <span className="eyebrow">Elasticity progress scorecard</span>
+        <span className="eyebrow">EL^STICITY progress scorecard</span>
         <strong>Week 1 → Week 4</strong>
       </div>
       <div className="scorecard-grid scorecard-labels">
@@ -71,7 +70,7 @@ export default function Scorecard() {
           </span>
         </div>
       ))}
-      <div className="scorecard-foot">The promise is measurement, not a dramatic 28-day photo.</div>
+      <div className="scorecard-foot">Track the starting point. Revisit it. See what changed.</div>
     </div>
   )
 }
