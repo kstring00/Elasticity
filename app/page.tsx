@@ -103,16 +103,6 @@ export default function Home() {
         <p>This is the heart of El^sticity: make room, stretch wider, strengthen what supports you, and build from there.</p>
       </section>
 
-      <section className="launch-pain section-narrow">
-        <div className="section-label">Movement can feel different</div>
-        <h2>You do not have to fight your body to make progress.</h2>
-        <div className="pain-grid">
-          {phases.map(([title, copy]) => (
-            <article key={title}><span className="caret-bullet">^</span><h3>{title}</h3><p>{copy}</p></article>
-          ))}
-        </div>
-      </section>
-
       <section className="services-section section-narrow" id="services">
         <div className="launch-section-head">
           <div className="section-label">What Abrielle offers</div>
