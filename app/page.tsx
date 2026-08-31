@@ -23,7 +23,6 @@ const phases = [
 const faq = [
   ['Is mobility the main focus?', 'Yes. Mobility, stretching, recovery, range, and movement quality are the heart of El^sticity. Personal training is available, but it supports the mobility-first approach rather than replacing it.'],
   ['Can you work with me after physical therapy?', 'Yes, once you have completed rehabilitation and are cleared to return to exercise. Post-rehab mobility work is not medical treatment and does not replace a physician or physical therapist.'],
-  ['Can you build meal plans?', 'Yes. Abrielle is certified to build meal plans. The exact level of nutrition support can be discussed during onboarding.'],
   ['Do you train in person?', 'Yes. In-person training is available. If you do not have a gym membership, Abrielle may be able to bring you in as a guest or arrange an at-home session in a special case.'],
   ['Do I need a gym?', 'No. Your plan can be built around the equipment and environment you actually have access to.'],
   ['Do I have to send progress photos?', 'No. Progress photos are optional. Progress can also be measured through range of motion, consistency, strength, energy, control, and how movement feels.'],
@@ -82,16 +81,16 @@ function PricingCards() {
 export default function Home() {
   return (
     <main className="launch-home">
-      <section className="launch-hero">
-        <div className="launch-hero-copy">
-          <div className="hero-tag">Mobility, stretching, recovery + personalized training</div>
-          <h1 className="hero-rhythm"><span>Release.</span><span>Restore.</span><span>Rebuild.</span></h1>
-          <p className="launch-lead">El^sticity starts with how your body moves and feels. Mobility and stretching come first; strength, conditioning, and personal training are added when they support what you actually need.</p>
-          <div className="launch-actions">
-            <Link href="/fit" className="button-primary">Book a mobility fit check <ArrowRight size={15}/></Link>
-            <a href="#services" className="launch-text-link">See the services ↓</a>
+      <section className="launch-hero editorial-hero">
+        <div className="launch-hero-copy editorial-hero-copy">
+          <div className="hero-eyebrow">Custom 4-week training programs</div>
+          <h1>After four weeks, you&apos;ll have <em>proof</em> — not a feeling.</h1>
+          <p className="launch-lead">Most people train for months without knowing whether it is working. El^sticity gives the month structure, records the starting point, and brings key movements back in Week 4 so progress can be compared instead of guessed.</p>
+          <div className="launch-actions editorial-actions">
+            <Link href="/fit" className="button-primary">Take the 90-second fit check <span aria-hidden="true">→</span></Link>
+            <a href="#sample-week" className="launch-text-link">See a real training day <span aria-hidden="true">↓</span></a>
           </div>
-          <p className="trust-line">A quick fit check first. No card required.</p>
+          <p className="trust-line">Free, no card. You see the price before you buy.</p>
         </div>
         <Scorecard />
       </section>
@@ -118,13 +117,9 @@ export default function Home() {
             <span className="service-index">^02</span>
             <div><h3>Recovery and post-rehab mobility</h3><p>For clients who have completed physical therapy or rehabilitation and are cleared to return to exercise. This is not medical treatment and does not replace a physician or PT.</p></div>
           </article>
-          <article className="service-card">
-            <span className="service-index">^03</span>
-            <div><h3>Meal plans</h3><p>Abrielle is certified to build meal plans, so nutrition support can be added when it fits the client and the coaching relationship.</p></div>
-          </article>
           <article className="service-card training-service">
-            <span className="service-index">^04</span>
-            <div><h3>Personal training</h3><p>Strength and conditioning are available too — because sometimes moving better makes you want to do more. Training stays personalized and mobility-aware.</p></div>
+            <span className="service-index">^03</span>
+            <div><h3>Personal training</h3><p>Strength and conditioning are available too. Training stays personalized, mobility-aware, and built around your actual starting point.</p></div>
           </article>
         </div>
         <div className="access-note"><span>^</span><p><strong>In-person access:</strong> sessions are available in person. No gym membership? By arrangement, Abrielle may bring you in as her guest or train you at home in a special case.</p></div>
@@ -185,7 +180,7 @@ export default function Home() {
       <section className="fit-section section-narrow">
         <div className="launch-section-head"><div className="section-label">A good fit matters</div><h2>Know what this coaching is — and what it is not.</h2></div>
         <div className="fit-columns">
-          <div><h3>This may fit you if:</h3><ul><li><span>^</span>You want more mobility, flexibility, or confidence in how you move</li><li><span>^</span>You want support after finishing rehab and receiving clearance to exercise</li><li><span>^</span>You want personalized training without an all-or-nothing mindset</li><li><span>^</span>You want nutrition support from a coach certified to build meal plans</li></ul></div>
+          <div><h3>This may fit you if:</h3><ul><li><span>^</span>You want more mobility, flexibility, or confidence in how you move</li><li><span>^</span>You want support after finishing rehab and receiving clearance to exercise</li><li><span>^</span>You want personalized training without an all-or-nothing mindset</li></ul></div>
           <div><h3>This is not the right fit if:</h3><ul><li><span>^</span>You have an untreated injury or pain that needs medical evaluation first</li><li><span>^</span>You expect a dramatic visual transformation in 28 days without participating in the process</li></ul></div>
         </div>
       </section>
@@ -204,10 +199,10 @@ export default function Home() {
         <CoachPortrait />
         <div>
           <div className="section-label">About the coach</div>
-          <h2>I'm Abrielle.</h2>
+          <h2>I&apos;m Abrielle.</h2>
           <p className="about-signature">Release. Restore. Rebuild.</p>
           <p>Mobility and stretching are the heart of how I coach. I want people to feel more capable in their bodies, create space where things feel restricted, and build strength from a better foundation.</p>
-          <p>I also offer personal training, meal-plan support within my certification, and select in-person sessions. If you are coming out of rehabilitation, I work after medical or PT clearance — not in place of it.</p>
+          <p>I also offer personal training and select in-person sessions. If you are coming out of rehabilitation, I work after medical or PT clearance — not in place of it.</p>
           {hasInstagram && <a className="about-instagram" href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener"><Instagram size={16}/> Follow Abrielle on Instagram</a>}
         </div>
       </section>
