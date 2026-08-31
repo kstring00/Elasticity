@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Check, Instagram, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
+import HeroSection from './components/HeroSection'
 import Scorecard from './components/Scorecard'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
@@ -82,17 +83,9 @@ function PricingCards() {
 export default function Home() {
   return (
     <main className="launch-home">
-      <section className="launch-hero">
-        <div className="launch-hero-copy">
-          <div className="hero-tag">Mobility, stretching, recovery + personalized training</div>
-          <h1 className="hero-rhythm"><span>Release.</span><span>Restore.</span><span>Rebuild.</span></h1>
-          <p className="launch-lead">El^sticity starts with how your body moves and feels. Mobility and stretching come first; strength, conditioning, and personal training are added when they support what you actually need.</p>
-          <div className="launch-actions">
-            <Link href="/fit" className="button-primary">Book a mobility fit check <ArrowRight size={15}/></Link>
-            <a href="#services" className="launch-text-link">See the services ↓</a>
-          </div>
-          <p className="trust-line">A quick fit check first. No card required.</p>
-        </div>
+      <HeroSection />
+
+      <section className="scorecard-section section-narrow" aria-label="Progress scorecard preview">
         <Scorecard />
       </section>
 
