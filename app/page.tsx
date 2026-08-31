@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Check, Instagram, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import Scorecard from './components/Scorecard'
+import ServicesSection from './components/ServicesSection'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
 const sampleDay = [
@@ -102,28 +103,7 @@ export default function Home() {
         <p>This is the heart of El^sticity: make room, stretch wider, strengthen what supports you, and build from there.</p>
       </section>
 
-      <section className="services-section section-narrow" id="services">
-        <div className="launch-section-head">
-          <div className="section-label">What Abrielle offers</div>
-          <h2>Mobility is the center. Everything else supports it.</h2>
-          <p>Each service starts with your real body, real schedule, and real goals — not a generic template.</p>
-        </div>
-        <div className="services-grid">
-          <article className="service-card primary-service">
-            <span className="service-index">^01</span>
-            <div><h3>Mobility and stretching</h3><p>Personalized sessions and programming for range, stiffness, control, movement quality, and helping your body feel more available day to day.</p><Link href="/fit">Book a mobility session <ArrowRight size={15}/></Link></div>
-          </article>
-          <article className="service-card recovery-service">
-            <span className="service-index">^02</span>
-            <div><h3>Recovery and post-rehab mobility</h3><p>For clients who have completed physical therapy or rehabilitation and are cleared to return to exercise. This is not medical treatment and does not replace a physician or PT.</p></div>
-          </article>
-          <article className="service-card training-service">
-            <span className="service-index">^03</span>
-            <div><h3>Personal training</h3><p>Strength and conditioning are available too. Training stays personalized, mobility-aware, and built around your actual starting point.</p></div>
-          </article>
-        </div>
-        <div className="access-note"><span>^</span><p><strong>In-person access:</strong> sessions are available in person. No gym membership? By arrangement, Abrielle may bring you in as her guest or train you at home in a special case.</p></div>
-      </section>
+      <ServicesSection />
 
       <section className="sample-week section-narrow" id="sample-week">
         <div className="launch-section-head">
