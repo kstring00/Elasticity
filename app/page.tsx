@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { ArrowRight, Check, Instagram, Play } from 'lucide-react'
+import { ArrowRight, Check, Instagram, MapPin, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
+import ServiceArt from './components/ServiceArt'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
 const sampleDay = [
@@ -18,6 +19,41 @@ const phases = [
   ['Release', 'Create space through mobility and stretching. Start with how your body moves today, not where you think it should be.'],
   ['Restore', 'Build range, control, confidence, and recovery habits that make movement feel more available.'],
   ['Rebuild', 'Layer strength and personalized training onto a body that is moving with more intention.'],
+]
+
+const services = [
+  {
+    art: 'mobility' as const,
+    index: '01',
+    title: 'Mobility and stretching',
+    copy: 'Personalized sessions and programming for range, stiffness, control, movement quality, and helping your body feel more available day to day.',
+    href: '/fit',
+    cta: 'Book a mobility session',
+  },
+  {
+    art: 'recovery' as const,
+    index: '02',
+    title: 'Recovery and post-rehab mobility',
+    copy: 'For clients who have completed physical therapy or rehabilitation and are cleared to return to exercise. This is not medical treatment and does not replace a physician or PT.',
+    href: '/fit',
+    cta: 'See if this fits you',
+  },
+  {
+    art: 'nutrition' as const,
+    index: '03',
+    title: 'Meal plans',
+    copy: 'Abrielle is certified to build meal plans, so nutrition support can be added when it fits the client and the coaching relationship.',
+    href: '/fit',
+    cta: 'Ask about nutrition support',
+  },
+  {
+    art: 'training' as const,
+    index: '04',
+    title: 'Personal training',
+    copy: 'Strength and conditioning are available too — because sometimes moving better makes you want to do more. Training stays personalized and mobility-aware.',
+    href: '/fit',
+    cta: 'Book a training session',
+  },
 ]
 
 const faq = [
@@ -91,31 +127,31 @@ export default function Home() {
         <p>This is the heart of El^sticity: make room, stretch wider, strengthen what supports you, and build from there.</p>
       </section>
 
-      <section className="services-section section-narrow" id="services">
-        <div className="launch-section-head">
-          <div className="section-label">What Abrielle offers</div>
-          <h2>Mobility is the center. Everything else supports it.</h2>
-          <p>Each service starts with your real body, real schedule, and real goals — not a generic template.</p>
+      <section className="services-section svc-section section-narrow" id="services">
+        <div className="svc-head">
+          <p className="svc-eyebrow">What Abrielle offers</p>
+          <h2>Mobility is the center.<br />Everything else <em>supports</em> it.</h2>
+          <p className="svc-lede">Each service starts with your real body, real schedule, and real goals — not a generic template.</p>
         </div>
-        <div className="services-grid">
-          <article className="service-card primary-service">
-            <span className="service-index">^01</span>
-            <div><h3>Mobility and stretching</h3><p>Personalized sessions and programming for range, stiffness, control, movement quality, and helping your body feel more available day to day.</p><Link href="/fit">Book a mobility session <ArrowRight size={15}/></Link></div>
-          </article>
-          <article className="service-card recovery-service">
-            <span className="service-index">^02</span>
-            <div><h3>Recovery and post-rehab mobility</h3><p>For clients who have completed physical therapy or rehabilitation and are cleared to return to exercise. This is not medical treatment and does not replace a physician or PT.</p></div>
-          </article>
-          <article className="service-card">
-            <span className="service-index">^03</span>
-            <div><h3>Meal plans</h3><p>Abrielle is certified to build meal plans, so nutrition support can be added when it fits the client and the coaching relationship.</p></div>
-          </article>
-          <article className="service-card training-service">
-            <span className="service-index">^04</span>
-            <div><h3>Personal training</h3><p>Strength and conditioning are available too — because sometimes moving better makes you want to do more. Training stays personalized and mobility-aware.</p></div>
-          </article>
+
+        <div className="svc-grid">
+          {services.map(({ art, index, title, copy, href, cta }) => (
+            <article className={`svc-card svc-card--${art}`} key={title}>
+              <ServiceArt name={art} />
+              <div className="svc-body">
+                <span className="svc-index">{index}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+                <Link href={href} className="svc-link">{cta} <span aria-hidden="true">&rarr;</span></Link>
+              </div>
+            </article>
+          ))}
         </div>
-        <div className="access-note"><span>^</span><p><strong>In-person access:</strong> sessions are available in person. No gym membership? By arrangement, Abrielle may bring you in as her guest or train you at home in a special case.</p></div>
+
+        <div className="svc-note">
+          <span className="svc-note-label"><MapPin size={15} /> In person. By arrangement.</span>
+          <p>Sessions are available in person. No gym membership? By arrangement, Abrielle may bring you in as her guest or train you at home in a special case.</p>
+        </div>
       </section>
 
       <section className="sample-week section-narrow" id="sample-week">
