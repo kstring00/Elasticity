@@ -222,10 +222,8 @@ body {
 /* Problem + deliverable */
 .pain-grid,
 .deliverable-grid,
-.fit-columns,
 .week-grid,
 .launch-pricing-grid,
-.guarantee,
 .about-section,
 .faq-list {
   border-color: color-mix(in srgb, var(--black) 13%, var(--rule));
@@ -233,7 +231,6 @@ body {
 
 .pain-grid article,
 .deliverable-grid article,
-.fit-columns > div,
 .week-grid article,
 .launch-price-card,
 .faq-list details {
@@ -241,14 +238,12 @@ body {
 }
 
 .pain-grid article,
-.deliverable-grid article,
-.fit-columns > div {
+.deliverable-grid article {
   transition: background .22s ease, transform .22s ease;
 }
 
 .pain-grid article:hover,
-.deliverable-grid article:hover,
-.fit-columns > div:hover {
+.deliverable-grid article:hover {
   background: color-mix(in srgb, var(--signal-bright) 10%, var(--paper));
 }
 
@@ -352,22 +347,6 @@ body {
   color: var(--deep-alt);
 }
 
-/* Guarantee */
-.guarantee {
-  position: relative;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--signal-bright) 14%, var(--paper)), var(--paper) 58%);
-  padding-left: clamp(18px, 2vw, 28px);
-}
-
-.guarantee::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 72px;
-  bottom: 72px;
-  width: 3px;
-  background: linear-gradient(var(--deep), var(--signal));
-}
 
 /* About + FAQ */
 .about-mark,
@@ -477,12 +456,4 @@ body {
     opacity: .72;
   }
 
-  .guarantee {
-    padding-left: 18px;
-  }
-
-  .guarantee::before {
-    top: 40px;
-    bottom: 40px;
-  }
 }

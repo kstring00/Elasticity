@@ -188,11 +188,11 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 }
 .scripture-section p { max-width: 680px; margin: 0 auto; color: var(--graphite); font-size: 1.06rem; }
 
-.caret-bullet,.service-index,.access-note > span,.fit-columns li > span { color: var(--rose); font-weight: 700; }
+.caret-bullet,.service-index,.access-note > span { color: var(--rose); font-weight: 700; }
 
 /* Cards are soft, never athletic/dark. */
-.pain-grid,.deliverable-grid,.fit-columns,.launch-pricing-grid { gap: 16px !important; border: 0 !important; }
-.pain-grid article,.fit-columns > div,.launch-price-card,.faq-list details,.service-card,.testimonial-card {
+.pain-grid,.deliverable-grid,.launch-pricing-grid { gap: 16px !important; border: 0 !important; }
+.pain-grid article,.launch-price-card,.faq-list details,.service-card,.testimonial-card {
   background: rgba(255,249,247,.72) !important;
   border: 1px solid rgba(74,44,61,.12) !important;
   border-radius: 24px !important;
@@ -272,8 +272,6 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 .video-phone { width:128px; aspect-ratio:9/16; border:1px solid rgba(74,44,61,.22); border-radius:26px; display:grid; place-items:center; align-content:center; gap:14px; background:rgba(251,244,245,.75); color:var(--plum); text-align:center; font-size:.8rem; }
 
 /* Fit + pricing */
-.fit-columns li { display:flex; align-items:flex-start; gap:9px; }
-.fit-columns > div:last-child { background:rgba(233,195,201,.24) !important; }
 .launch-price-card.featured {
   background:var(--rose-soft) !important;
   color:var(--plum) !important;
@@ -284,8 +282,6 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 .launch-price-card.featured .button-primary { background:var(--rose) !important; color:#fff !important; border-color:var(--rose) !important; }
 .launch-price strong,.launch-price-card.featured .launch-price strong { color:var(--signal-strong) !important; }
 
-.guarantee { background:rgba(143,167,143,.12) !important; border:1px solid rgba(143,167,143,.32) !important; border-radius:24px; }
-.guarantee::before { background:var(--sage) !important; }
 .about-signature { font-family:var(--font-display),Georgia,serif; color:var(--rose); font-size:clamp(1.7rem,3vw,2.7rem); }
 .about-mark,.about-portrait { background:linear-gradient(145deg,var(--rose-soft),var(--paper)) !important; border-color:rgba(199,126,150,.28) !important; }
 .about-instagram,.faq-list summary::after { color:var(--signal-strong) !important; }
