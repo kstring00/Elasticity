@@ -137,7 +137,6 @@ body {
 .site-header .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   margin-right: auto;
   font-family: var(--font-serif), Georgia, serif;
   font-size: 16px;
@@ -150,10 +149,12 @@ body {
 }
 
 .site-header .wordmark .caret {
-  font-size: 1.15em;
+  display: inline-block;
+  font-size: 1.35em;
   line-height: 1;
-  letter-spacing: 0;
-  transform: translateY(-1px);
+  /* The glyph rides high in the em box; drop it into the cap band so it
+     reads as the A it replaces rather than a floating accent. */
+  transform: translateY(0.1em);
 }
 
 .site-header .launch-nav {

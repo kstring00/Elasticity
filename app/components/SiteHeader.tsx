@@ -10,9 +10,8 @@ const links = [
 export default function SiteHeader() {
   return (
     <header className="site-header launch-header">
-      <Link href="/" className="wordmark" aria-label="El^sticity home">
-        <span className="caret" aria-hidden="true">^</span>
-        <span>Elasticity</span>
+      <Link href="/" className="wordmark" aria-label="Elasticity home">
+        <span>El<span className="caret" aria-hidden="true">^</span>sticity</span>
       </Link>
       <nav className="main-nav launch-nav" aria-label="Primary navigation">
         {links.map(([href, label]) => (
