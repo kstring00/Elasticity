@@ -17,7 +17,7 @@ const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--
 
 export const metadata: Metadata = {
   title: 'Mobility, stretching & personalized training | El^sticity',
-  description: 'Mobility-first coaching, stretching, recovery, meal-plan support, and personalized training with El^sticity.',
+  description: 'Mobility-first coaching, stretching, recovery, and personalized training with El^sticity.',
   icons: { icon: '/icon.svg' },
 }
 

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Check, Instagram, MapPin, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
+import ScriptureSection from './components/ScriptureSection'
 import ServiceArt from './components/ServiceArt'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
@@ -39,16 +40,8 @@ const services = [
     cta: 'See if this fits you',
   },
   {
-    art: 'nutrition' as const,
-    index: '03',
-    title: 'Meal plans',
-    copy: 'Abrielle is certified to build meal plans, so nutrition support can be added when it fits the client and the coaching relationship.',
-    href: '/fit',
-    cta: 'Ask about nutrition support',
-  },
-  {
     art: 'training' as const,
-    index: '04',
+    index: '03',
     title: 'Personal training',
     copy: 'Strength and conditioning are available too — because sometimes moving better makes you want to do more. Training stays personalized and mobility-aware.',
     href: '/fit',
@@ -59,7 +52,6 @@ const services = [
 const faq = [
   ['Is mobility the main focus?', 'Yes. Mobility, stretching, recovery, range, and movement quality are the heart of El^sticity. Personal training is available, but it supports the mobility-first approach rather than replacing it.'],
   ['Can you work with me after physical therapy?', 'Yes, once you have completed rehabilitation and are cleared to return to exercise. Post-rehab mobility work is not medical treatment and does not replace a physician or physical therapist.'],
-  ['Can you build meal plans?', 'Yes. Abrielle is certified to build meal plans. The exact level of nutrition support can be discussed during onboarding.'],
   ['Do you train in person?', 'Yes. In-person training is available. If you do not have a gym membership, Abrielle may be able to bring you in as a guest or arrange an at-home session in a special case.'],
   ['Do I need a gym?', 'No. Your plan can be built around the equipment and environment you actually have access to.'],
   ['Do I have to send progress photos?', 'No. Progress photos are optional. Progress can also be measured through range of motion, consistency, strength, energy, control, and how movement feels.'],
@@ -120,12 +112,7 @@ export default function Home() {
     <main className="launch-home">
       <HeroSection />
 
-      <section className="scripture-section section-narrow" aria-label="Isaiah 54:2">
-        <div className="caret-divider" aria-hidden="true">^</div>
-        <div className="scripture-reference">Isaiah 54:2 · ESV</div>
-        <blockquote>“Enlarge the place of your tent, and let the curtains of your habitations be stretched out; do not hold back…”</blockquote>
-        <p>This is the heart of El^sticity: make room, stretch wider, strengthen what supports you, and build from there.</p>
-      </section>
+      <ScriptureSection />
 
       <section className="services-section svc-section section-narrow" id="services">
         <div className="svc-head">
@@ -209,7 +196,7 @@ export default function Home() {
       <section className="fit-section section-narrow">
         <div className="launch-section-head"><div className="section-label">A good fit matters</div><h2>Know what this coaching is — and what it is not.</h2></div>
         <div className="fit-columns">
-          <div><h3>This may fit you if:</h3><ul><li><span>^</span>You want more mobility, flexibility, or confidence in how you move</li><li><span>^</span>You want support after finishing rehab and receiving clearance to exercise</li><li><span>^</span>You want personalized training without an all-or-nothing mindset</li><li><span>^</span>You want nutrition support from a coach certified to build meal plans</li></ul></div>
+          <div><h3>This may fit you if:</h3><ul><li><span>^</span>You want more mobility, flexibility, or confidence in how you move</li><li><span>^</span>You want support after finishing rehab and receiving clearance to exercise</li><li><span>^</span>You want personalized training without an all-or-nothing mindset</li></ul></div>
           <div><h3>This is not the right fit if:</h3><ul><li><span>^</span>You have an untreated injury or pain that needs medical evaluation first</li><li><span>^</span>You expect a dramatic visual transformation in 28 days without participating in the process</li></ul></div>
         </div>
       </section>
@@ -231,7 +218,7 @@ export default function Home() {
           <h2>I&apos;m Abrielle.</h2>
           <p className="about-signature">Release. Restore. Rebuild.</p>
           <p>Mobility and stretching are the heart of how I coach. I want people to feel more capable in their bodies, create space where things feel restricted, and build strength from a better foundation.</p>
-          <p>I also offer personal training, meal-plan support within my certification, and select in-person sessions. If you are coming out of rehabilitation, I work after medical or PT clearance — not in place of it.</p>
+          <p>I also offer personal training and select in-person sessions. If you are coming out of rehabilitation, I work after medical or PT clearance — not in place of it.</p>
           {hasInstagram && <a className="about-instagram" href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener"><Instagram size={16}/> Follow Abrielle on Instagram</a>}
         </div>
       </section>
