@@ -1,3 +1,8 @@
+// OPEN QUESTION: positioning. Site copy says mobility-first; this scorecard
+// is all strength metrics. Confirm with coach whether the offer is
+// (a) mobility-first, or (b) strength programming with mobility built in.
+// Resolve copy and scorecard together — do not fix one in isolation.
+//
 // TODO: replace with Abrielle's real numbers before launch
 export const SCORECARD_ROWS: ReadonlyArray<readonly [string, string, string]> = [
   ['Bench press', '135', '155'],

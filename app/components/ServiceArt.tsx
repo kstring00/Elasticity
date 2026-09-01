@@ -2,7 +2,7 @@
 // the two service photos that shipped in the repo are corrupt (one decodes to
 // solid black), and abstract brand-tinted art scales without new assets.
 
-type Props = { name: 'mobility' | 'recovery' | 'training' }
+type Props = { name: 'mobility' | 'training' }
 
 export default function ServiceArt({ name }: Props) {
   return (
@@ -22,16 +22,6 @@ export default function ServiceArt({ name }: Props) {
           </>
         )}
 
-        {name === 'recovery' && (
-          <>
-            {/* settling layers: motion coming back to rest */}
-            <path className="art-fill" d="M0 92c70-44 126 32 196-6s94-52 124-64v46c-32 12-56 30-126 68s-124-38-194 6z" />
-            <path className="art-fill" d="M0 178c70-44 126 32 196-6s94-52 124-64v46c-32 12-56 30-126 68s-124-38-194 6z" />
-            <path className="art-fill" d="M0 264c70-44 126 32 196-6s94-52 124-64v46c-32 12-56 30-126 68s-124-38-194 6z" />
-            <path className="art-line" fill="none" d="M0 136c70-44 126 32 196-6s94-52 124-64" />
-            <path className="art-line" fill="none" d="M0 222c70-44 126 32 196-6s94-52 124-64" />
-          </>
-        )}
 
         {name === 'training' && (
           <>

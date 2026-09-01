@@ -7,6 +7,11 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 type FitState = { location: string; days: string; experience: string; goals: string[]; pain: string; firstName: string; email: string }
 const emptyFit: FitState = { location: '', days: '', experience: '', goals: [], pain: '', firstName: '', email: '' }
 
+// PRICES ARE PLACEHOLDERS, NOT CONFIRMED. See the pricing note in
+// app/components/PricingSection.tsx, including the tier-3 math constraint
+// (tier 3 must price below 3 x tier 2). The checkout buttons below still post to
+// Stripe with the real amounts in app/api/checkout/route.ts — resolve the displayed
+// placeholders and those amounts together before taking any payment.
 export default function PlanPage() {
   const [fit, setFit] = useState<FitState>(emptyFit)
   const [loaded, setLoaded] = useState(false)
@@ -45,13 +50,13 @@ export default function PlanPage() {
       <section className="plan-pricing">
         <div className="launch-section-head"><div className="eyebrow">Founding-client pricing</div><h2>Choose how much coach involvement you want.</h2></div>
         <div className="launch-pricing-grid">
-          <article className="launch-price-card"><div className="price-kicker">Founding client</div><h3>The Build</h3><div className="launch-price"><span>$149</span><strong>$99</strong></div><ul><li><Check size={15}/>Mobility-first custom four-week plan</li><li><Check size={15}/>Training layered in when appropriate</li><li><Check size={15}/>One revision within seven days</li></ul><form action="/api/checkout" method="post"><input type="hidden" name="plan" value="build"/><input type="hidden" name="email" value={fit.email}/><button className="button-primary" type="submit">Choose The Build <ArrowRight size={15}/></button></form></article>
-          <article className="launch-price-card featured"><div className="price-kicker">More support</div><h3>Build + Check-Ins</h3><div className="launch-price"><span>$229</span><strong>$149</strong></div><ul><li><Check size={15}/>Everything in The Build</li><li><Check size={15}/>Four structured weekly check-ins</li><li><Check size={15}/>Written feedback + adjustment review</li></ul><form action="/api/checkout" method="post"><input type="hidden" name="plan" value="guided"/><input type="hidden" name="email" value={fit.email}/><button className="button-primary" type="submit">Choose guided support <ArrowRight size={15}/></button></form></article>
-          <article className="launch-price-card"><div className="price-kicker">Longer runway</div><h3>12-Week Progression</h3><div className="launch-price single"><strong>$549</strong></div><ul><li><Check size={15}/>Three four-week builds</li><li><Check size={15}/>Weekly check-ins throughout</li><li><Check size={15}/>Months 2–3 built from real feedback</li></ul><form action="/api/checkout" method="post"><input type="hidden" name="plan" value="progression"/><input type="hidden" name="email" value={fit.email}/><button className="button-secondary" type="submit">Choose 12 weeks <ArrowRight size={15}/></button></form></article>
+          <article className="launch-price-card"><h3>The Build</h3><div className="launch-price single"><strong>[[TODO_PRICE_TIER_1]]</strong></div><ul><li><Check size={15}/>Mobility-first custom four-week plan</li><li><Check size={15}/>Training layered in when appropriate</li><li><Check size={15}/>[[TODO_REVISION_POLICY]]</li></ul><form action="/api/checkout" method="post"><input type="hidden" name="plan" value="build"/><input type="hidden" name="email" value={fit.email}/><button className="button-primary" type="submit">Choose The Build <ArrowRight size={15}/></button></form></article>
+          <article className="launch-price-card featured"><h3>Build + Check-Ins</h3><div className="launch-price single"><strong>[[TODO_PRICE_TIER_2]]</strong></div><ul><li><Check size={15}/>Everything in The Build</li><li><Check size={15}/>Four structured weekly check-ins</li><li><Check size={15}/>Written feedback + adjustment review</li></ul><form action="/api/checkout" method="post"><input type="hidden" name="plan" value="guided"/><input type="hidden" name="email" value={fit.email}/><button className="button-primary" type="submit">Choose guided support <ArrowRight size={15}/></button></form></article>
+          <article className="launch-price-card"><h3>12-Week Progression</h3><div className="launch-price single"><strong>[[TODO_PRICE_TIER_3]]</strong></div><ul><li><Check size={15}/>Three four-week builds</li><li><Check size={15}/>Weekly check-ins throughout</li><li><Check size={15}/>Months 2–3 built from real feedback</li></ul><form action="/api/checkout" method="post"><input type="hidden" name="plan" value="progression"/><input type="hidden" name="email" value={fit.email}/><button className="button-secondary" type="submit">Choose 12 weeks <ArrowRight size={15}/></button></form></article>
         </div>
       </section>
 
-      <section className="plan-guarantee"><div className="eyebrow">Fit guarantee</div><h2>If the plan does not match the intake, request a rebuild.</h2><p>If the schedule, equipment, mobility needs, or training level does not reflect what you submitted, request one revision within seven days of delivery at no additional charge.</p></section>
+      <section className="plan-guarantee"><div className="eyebrow">Fit guarantee</div><h2>If the plan does not match the intake, request a rebuild.</h2><p>[[TODO_REVISION_POLICY]]</p></section>
     </div></main>
   )
 }

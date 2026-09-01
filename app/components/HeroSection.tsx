@@ -54,7 +54,7 @@ export default function HeroSection() {
             get added when they support how your body actually moves.
           </p>
           <div className="hero-ctas">
-            <Link href="/fit" className="hero-cta-primary">
+            <Link href="/fit?src=hero-primary" className="hero-cta-primary">
               Book a mobility fit check <span aria-hidden="true">→</span>
             </Link>
             <a href="#services" className="hero-cta-secondary">

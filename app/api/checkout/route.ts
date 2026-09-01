@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
+// AMOUNTS BELOW ARE UNCONFIRMED and are what Stripe actually charges. The displayed
+// prices on / and /plan are [[TODO_PRICE_TIER_*]] placeholders; resolve both together.
+// Tier-3 math constraint: progression must price below 3 x guided.
 const plans = {
   build: {
     name: 'Elasticity — The Build (Founding Client)',
     amount: 9900,
     catalogSlug: 'custom-4-week',
-    description: 'Custom four-week training program with one revision window.',
+    description: 'Custom four-week training program.',
   },
   guided: {
     name: 'Elasticity — The Build + Weekly Check-Ins (Founding Client)',

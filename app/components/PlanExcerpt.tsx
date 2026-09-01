@@ -9,41 +9,41 @@ type Decision = {
   why: string
 }
 
-// TODO: Abrielle to replace with a real anonymized case before launch.
+// PLACEHOLDERS — the four examples that were here were written by an AI, not by the
+// coach, so they were removed. The You said / So the plan says / Because structure is
+// kept because it is correct; only the content has to come from the coach.
+// Do not fill these in with plausible-sounding programming — they must be her reasoning.
 const decisions: Decision[] = [
   {
     step: '01',
-    signal: 'My hips feel locked by the end of a work day.',
-    choice: '90/90 hip switch',
-    dose: '3 × 6 per side, slow',
-    why: 'Before anything gets loaded, the hip has to rotate. This teaches the range and shows us what is actually available today, which is where the rest of the week gets set.',
+    signal: '[[TODO_BUILD_EXAMPLE_1_CLIENT_QUOTE]]',
+    choice: '[[TODO_BUILD_EXAMPLE_1_PRESCRIPTION]]',
+    why: '[[TODO_BUILD_EXAMPLE_1_REASONING]]',
   },
   {
     step: '02',
-    signal: 'Squats pinch at the bottom.',
-    choice: 'Heel-elevated goblet squat',
-    dose: '3 × 8–10 · 90 sec',
-    why: 'The ankle is the limiter here, not the knee. Elevating the heel borrows range you do not have yet, so depth stays trainable while the ankle catches up.',
+    signal: '[[TODO_BUILD_EXAMPLE_2_CLIENT_QUOTE]]',
+    choice: '[[TODO_BUILD_EXAMPLE_2_PRESCRIPTION]]',
+    why: '[[TODO_BUILD_EXAMPLE_2_REASONING]]',
   },
   {
     step: '03',
-    signal: 'I have 40 minutes, three days a week.',
-    choice: 'Two supersets and one finisher',
-    why: 'The session is built for the time that actually exists. A plan that needs 75 minutes is the plan you abandon in week three.',
+    signal: '[[TODO_BUILD_EXAMPLE_3_CLIENT_QUOTE]]',
+    choice: '[[TODO_BUILD_EXAMPLE_3_PRESCRIPTION]]',
+    why: '[[TODO_BUILD_EXAMPLE_3_REASONING]]',
   },
   {
     step: '04',
-    signal: 'I want to feel stronger overhead.',
-    choice: 'Half-kneeling landmine press',
-    dose: '3 × 8',
-    why: 'Pressing straight overhead is earned, not assumed. This loads a position your shoulder can own right now, and we revisit the overhead question at the re-test.',
+    signal: '[[TODO_BUILD_EXAMPLE_4_CLIENT_QUOTE]]',
+    choice: '[[TODO_BUILD_EXAMPLE_4_PRESCRIPTION]]',
+    why: '[[TODO_BUILD_EXAMPLE_4_REASONING]]',
   },
 ]
 
 const rules = [
   ['Progression', 'Reps before load. When the top of the range feels easy two sessions running, the load moves.'],
   ['Re-test', 'Week four repeats week one, so the change is measured instead of guessed.'],
-  ['Revision', 'If the build misses what you submitted, one revision inside seven days.'],
+  ['Revision', '[[TODO_REVISION_POLICY]]'],
 ]
 
 export default function PlanExcerpt() {
@@ -54,7 +54,7 @@ export default function PlanExcerpt() {
         <h2>Every line has a <em>reason</em>.</h2>
         <p className="excerpt-lede">
           The exercises are the easy part. What you are paying for is the thinking that put
-          them there — and it starts from what you tell Abrielle at intake.
+          them there — and it starts from what you tell me at intake.
         </p>
       </div>
 

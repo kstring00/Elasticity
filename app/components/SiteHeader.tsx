@@ -1,8 +1,10 @@
 import Link from 'next/link'
 
+// The Testimonials link is removed on purpose: the section is switched off in
+// app/components/Testimonials.tsx until real approved reviews exist. Restore
+// ['/#testimonials', 'Testimonials'] here when it is turned back on.
 const links = [
   ['/#services', 'Services'],
-  ['/#testimonials', 'Testimonials'],
   ['/#pricing', 'Pricing'],
   ['/#about', 'About'],
 ]
@@ -17,7 +19,7 @@ export default function SiteHeader() {
         {links.map(([href, label]) => (
           <Link href={href} key={href}>{label}</Link>
         ))}
-        <Link href="/fit" className="nav-cta">Take the fit check</Link>
+        <Link href="/fit?src=nav" className="nav-cta">Take the fit check</Link>
       </nav>
     </header>
   )

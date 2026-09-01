@@ -1,41 +1,48 @@
 import Link from 'next/link'
 
 type Tier = {
-  kicker: string
   name: string
-  was?: string
   price: string
-  save?: string
   summary: string
   features: string[]
   cta: string
+  href: string
   featured?: boolean
-  badge?: string
 }
 
+// PRICING — NOT CONFIRMED BY THE COACH. Every displayed price is a placeholder.
+//
+// TIER-3 MATH CONSTRAINT (do not reintroduce the bug that was here):
+// tier 3 is three consecutive four-week builds with weekly check-ins, i.e. three
+// of tier 2. Whatever numbers land here, tier 3 must be PRICED BELOW 3 x tier 2,
+// or the longer commitment costs more than buying the same thing month by month.
+// The previous numbers ($149 x 3 = $447 vs. a $549 twelve-week package) broke this.
+//
+// The "was" strikethrough prices, the "Save $X" badges, and the "Founding client" /
+// "Most support per week" eyebrows were removed: none of them were confirmed, and a
+// struck-through price is a claim about a prior price that has to be true.
+// Reintroduce a "was" price only when a real prior price actually existed.
+//
+// Stripe charges real amounts from app/api/checkout/route.ts. Resolve the placeholders
+// and those amounts together — do not ship a placeholder price next to a live charge.
 const tiers: Tier[] = [
   {
-    kicker: 'Founding client',
     name: 'The Build',
-    was: '$149',
-    price: '$99',
-    save: 'Save $50',
+    price: '[[TODO_PRICE_TIER_1]]',
     summary: 'A custom four-week plan built around your goals, mobility needs, schedule, and equipment.',
     features: [
       'Mobility and stretching built around you',
       'Personalized training when it belongs in the plan',
       'Progress tracking and clear instructions',
-      'One revision within seven days',
+      '[[TODO_REVISION_POLICY]]',
     ],
     cta: 'See if this fits you',
+    href: '/fit?src=pricing-build',
   },
   {
-    kicker: 'More support',
     name: 'The Build + Check-Ins',
-    was: '$229',
-    price: '$149',
-    save: 'Save $80',
-    summary: 'The same custom build, plus a weekly feedback loop with Abrielle.',
+    price: '[[TODO_PRICE_TIER_2]]',
+    summary: 'The same custom build, plus a weekly feedback loop with me.',
     features: [
       'Everything in The Build',
       'Four structured weekly check-ins',
@@ -43,13 +50,12 @@ const tiers: Tier[] = [
       'Adjustments when your body or schedule needs them',
     ],
     cta: 'Choose guided support',
+    href: '/fit?src=pricing-guided',
     featured: true,
-    badge: 'Most support per week',
   },
   {
-    kicker: 'Longer runway',
     name: '12-Week Progression',
-    price: '$549',
+    price: '[[TODO_PRICE_TIER_3]]',
     summary: 'Three consecutive builds shaped by what you learn in the block before it.',
     features: [
       'Three four-week programs',
@@ -58,6 +64,7 @@ const tiers: Tier[] = [
       'Progress tracked across all twelve weeks',
     ],
     cta: 'Explore the 12-week option',
+    href: '/fit?src=pricing-progression',
   },
 ]
 
@@ -91,15 +98,10 @@ export default function PricingSection() {
         <div className="tier-grid">
           {tiers.map((t) => (
             <article className={`tier${t.featured ? ' tier--featured' : ''}`} key={t.name}>
-              {t.badge && <span className="tier-badge">{t.badge}</span>}
-
-              <p className="tier-kicker">{t.kicker}</p>
               <h3>{t.name}</h3>
 
               <p className="tier-price">
-                {t.was && <s>{t.was}</s>}
                 <strong>{t.price}</strong>
-                {t.save && <span className="tier-save">{t.save}</span>}
               </p>
 
               <p className="tier-summary">{t.summary}</p>
@@ -110,7 +112,7 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <Link href="/fit" className="tier-cta">
+              <Link href={t.href} className="tier-cta">
                 {t.cta} <span aria-hidden="true">&rarr;</span>
               </Link>
             </article>
@@ -119,7 +121,7 @@ export default function PricingSection() {
 
         <p className="pricing-note">
           Every plan starts with the fit check &mdash; about 90 seconds, no card required.
-          One revision is included within seven days of delivery.
+          [[TODO_REVISION_POLICY]]
         </p>
       </div>
     </section>
