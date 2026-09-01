@@ -78,17 +78,6 @@
 .deliverable-grid strong{font-size:.9375rem;font-weight:600}
 .deliverable-grid p{font-size:.875rem;line-height:1.6;color:var(--graphite);margin:6px 0 0}
 
-/* ---------- Monday table ---------- */
-.sample-week{padding-top:66px}
-.sample-table{border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--paper);font-variant-numeric:tabular-nums}
-.sample-row{display:grid;grid-template-columns:1.6fr .6fr .6fr;gap:14px;padding:14px 18px;border-bottom:1px solid var(--rule);font-size:.875rem;align-items:baseline}
-.sample-row:last-child{border-bottom:0}
-.sample-row strong{font-weight:500}
-.sample-row span{font-family:var(--font-mono),ui-monospace,monospace;font-variant-numeric:tabular-nums;color:var(--ink);text-align:right}
-.sample-head{background:none;color:var(--graphite);font-family:var(--font-mono),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.6875rem;border-bottom:1px solid var(--rule)}
-.sample-head span{color:var(--graphite);font-size:.6875rem}
-.sample-note{margin-top:16px;padding:16px 18px;border-left:2px solid var(--rule);background:none;font-size:.875rem;line-height:1.6;color:var(--graphite)}
-.sample-note strong{color:var(--ink);font-weight:600}
 
 /* ---------- Method ---------- */
 .launch-method{background:var(--paper);border-top:1px solid var(--rule)}
@@ -267,6 +256,5 @@
   .plan-roadmap>div{border-right:0!important;padding-left:0!important}
   .fit-nav{align-items:stretch;flex-direction:column-reverse}
   .fit-nav button,.fit-nav a{width:100%}
-  .sample-row{grid-template-columns:1.4fr .6fr .6fr;padding:14px 12px;font-size:.8125rem;gap:8px}
   .legal-page{padding:50px 18px}
 }
