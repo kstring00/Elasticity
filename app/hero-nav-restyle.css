@@ -229,7 +229,7 @@ body {
   z-index: 1;
   inset: 0;
   pointer-events: none;
-  opacity: 0.055;
+  opacity: 0.038;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
@@ -242,11 +242,19 @@ body {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(100deg,
-    rgba(255, 247, 240, 0.86) 0%,
-    rgba(255, 247, 240, 0.74) 32%,
-    rgba(255, 247, 240, 0.58) 46%,
-    rgba(255, 247, 240, 0.00) 68%);
+  /* Two layers: a diagonal lift for the copy column, plus a corner wash for
+     the dark rock under the CTA row. Lifting only where the photo is dark
+     keeps the sunset saturated instead of hazing the whole left third. */
+  background:
+    radial-gradient(108% 88% at 0% 98%,
+      rgba(255, 247, 240, 0.74) 0%,
+      rgba(255, 247, 240, 0.34) 42%,
+      rgba(255, 247, 240, 0.00) 68%),
+    linear-gradient(100deg,
+      rgba(255, 247, 240, 0.80) 0%,
+      rgba(255, 247, 240, 0.62) 30%,
+      rgba(255, 247, 240, 0.34) 48%,
+      rgba(255, 247, 240, 0.00) 66%);
 }
 
 .hero-grid {

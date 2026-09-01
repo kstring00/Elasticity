@@ -11,7 +11,8 @@ Only widths at or below the source width are emitted, so nothing is invented:
 a 3000px original yields real 640/1000/1600/2200 steps, while a small source
 quietly produces fewer. Use --crop to trim dead space off an edge before
 resizing — the hero puts copy over the left third, so a subject sitting too
-far left is worth cropping toward.
+far left is worth cropping toward, and the hero frame is much wider than a
+3:2 photograph, so trimming the top and bottom is usually needed too.
 """
 
 import argparse
@@ -30,16 +31,20 @@ def main() -> int:
     ap.add_argument("--name", default="hero", help="output basename (default: hero)")
     ap.add_argument("--crop-left", type=float, default=0.0, help="fraction to trim off the left, e.g. 0.13")
     ap.add_argument("--crop-right", type=float, default=0.0, help="fraction to trim off the right")
+    ap.add_argument("--crop-top", type=float, default=0.0, help="fraction to trim off the top")
+    ap.add_argument("--crop-bottom", type=float, default=0.0, help="fraction to trim off the bottom")
     args = ap.parse_args()
 
     src = Image.open(args.source).convert("RGB")
     print(f"source {src.width}x{src.height}")
 
-    if args.crop_left or args.crop_right:
+    if args.crop_left or args.crop_right or args.crop_top or args.crop_bottom:
         left = int(src.width * args.crop_left)
         right = src.width - int(src.width * args.crop_right)
-        src = src.crop((left, 0, right, src.height))
-        print(f"cropped to {src.width}x{src.height}")
+        top = int(src.height * args.crop_top)
+        bottom = src.height - int(src.height * args.crop_bottom)
+        src = src.crop((left, top, right, bottom))
+        print(f"cropped to {src.width}x{src.height} (aspect {src.width / src.height:.2f})")
 
     widths = [w for w in STEPS if w <= src.width] or [src.width]
     if src.width not in widths and src.width < STEPS[-1]:
