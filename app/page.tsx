@@ -174,22 +174,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="fit-section section-narrow">
-        <div className="launch-section-head"><div className="section-label">A good fit matters</div><h2>Know what this coaching is — and what it is not.</h2></div>
-        <div className="fit-columns">
-          <div><h3>This may fit you if:</h3><ul><li><span>^</span>You want more mobility, flexibility, or confidence in how you move</li><li><span>^</span>You want support after finishing rehab and receiving clearance to exercise</li><li><span>^</span>You want personalized training without an all-or-nothing mindset</li></ul></div>
-          <div><h3>This is not the right fit if:</h3><ul><li><span>^</span>You have an untreated injury or pain that needs medical evaluation first</li><li><span>^</span>You expect a dramatic visual transformation in 28 days without participating in the process</li></ul></div>
-        </div>
-      </section>
-
       <section className="launch-pricing section-narrow" id="pricing">
         <div className="launch-section-head"><div className="section-label">Founding-client pricing</div><h2>Choose the amount of support you want.</h2><p>Start with the fit check so the next step matches what you actually need.</p></div>
         <PricingCards />
-      </section>
-
-      <section className="guarantee section-narrow">
-        <div><div className="section-label">Fit guarantee</div><h2>If the plan does not match what you submitted, it gets fixed.</h2></div>
-        <p>If the delivered plan misses your schedule, equipment, mobility needs, or training level, request a revision within seven days. One revision is included.</p>
       </section>
 
       <section className="about-section section-narrow" id="about">
