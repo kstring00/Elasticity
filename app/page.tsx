@@ -2,17 +2,13 @@ import Link from 'next/link'
 import { ArrowRight, Check, Instagram, MapPin, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
+import MethodSection from './components/MethodSection'
 import PlanExcerpt from './components/PlanExcerpt'
 import ScriptureSection from './components/ScriptureSection'
 import ServiceArt from './components/ServiceArt'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
 
-const phases = [
-  ['Release', 'Create space through mobility and stretching. Start with how your body moves today, not where you think it should be.'],
-  ['Restore', 'Build range, control, confidence, and recovery habits that make movement feel more available.'],
-  ['Rebuild', 'Layer strength and personalized training onto a body that is moving with more intention.'],
-]
 
 const services = [
   {
@@ -135,20 +131,7 @@ export default function Home() {
 
       <PlanExcerpt />
 
-      <section className="launch-method" id="method">
-        <div className="section-narrow">
-          <div className="launch-section-head">
-            <div className="section-label">The El^sticity method</div>
-            <h2>Release. Restore. Rebuild.</h2>
-            <p>A simple rhythm with enough room to adapt to you.</p>
-          </div>
-          <div className="method-line" aria-hidden="true"><span>^</span><i></i><span>^</span><i></i><span>^</span></div>
-          <div className="week-grid">
-            {phases.map(([title, copy], index) => <article key={title}><span>^0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
-          </div>
-          <div className="method-closing"><strong>Progress can look like more range, less restriction, better control, stronger movement, or simply feeling like yourself again.</strong></div>
-        </div>
-      </section>
+      <MethodSection />
 
       <section className="testimonials-section section-narrow" id="testimonials">
         <div className="launch-section-head testimonial-head">

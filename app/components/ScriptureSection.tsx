@@ -62,7 +62,7 @@ export default function ScriptureSection() {
         <div className="scripture-caret" aria-hidden="true">^</div>
         <p className="scripture-ref">Isaiah 54:2 · ESV</p>
 
-        <div className="scripture-rule" aria-hidden="true">
+        <div className="ornament-rule" aria-hidden="true">
           <i /><span>&#10022;</span><i />
         </div>
 
@@ -73,7 +73,7 @@ export default function ScriptureSection() {
 
         <p className="scripture-pull">Do not hold back.</p>
 
-        <div className="scripture-rule" aria-hidden="true">
+        <div className="ornament-rule" aria-hidden="true">
           <i /><span>&#10022;</span><i />
         </div>
 

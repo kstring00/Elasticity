@@ -222,7 +222,6 @@ body {
 /* Problem + deliverable */
 .pain-grid,
 .deliverable-grid,
-.week-grid,
 .launch-pricing-grid,
 .about-section,
 .faq-list {
@@ -231,7 +230,6 @@ body {
 
 .pain-grid article,
 .deliverable-grid article,
-.week-grid article,
 .launch-price-card,
 .faq-list details {
   border-color: color-mix(in srgb, var(--black) 13%, var(--rule));
@@ -256,42 +254,6 @@ body {
   color: var(--black);
 }
 
-
-/* Method is the high-contrast brand moment */
-.launch-method {
-  background: var(--black);
-  color: var(--paper);
-  border-top-color: var(--black);
-}
-
-.launch-method .eyebrow,
-.launch-method .week-grid article > span {
-  color: var(--signal-bright);
-}
-
-.launch-method .launch-section-head p,
-.launch-method .week-grid p,
-.launch-method .method-closing span {
-  color: color-mix(in srgb, var(--paper) 66%, var(--graphite));
-}
-
-.launch-method .week-grid,
-.launch-method .week-grid article,
-.launch-method .method-closing {
-  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
-}
-
-.launch-method .week-grid article {
-  transition: background .24s ease, color .24s ease;
-}
-
-.launch-method .week-grid article:hover {
-  background: color-mix(in srgb, var(--deep) 22%, var(--black));
-}
-
-.launch-method .method-closing strong {
-  color: var(--paper);
-}
 
 /* Pricing */
 .launch-price-card {

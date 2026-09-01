@@ -851,7 +851,8 @@ body {
   color: #77591F;
 }
 
-.scripture-rule {
+/* Shared ornamental divider: hairline, diamond, hairline. */
+.ornament-rule {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -861,13 +862,13 @@ body {
   color: #B08A4A;
 }
 
-.scripture-rule i {
+.ornament-rule i {
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg, rgba(176, 138, 74, 0), rgba(176, 138, 74, 0.55), rgba(176, 138, 74, 0));
 }
 
-.scripture-rule span { font-size: 10px; line-height: 1; }
+.ornament-rule span { font-size: 10px; line-height: 1; }
 
 .scripture blockquote {
   margin: 0;
@@ -1213,4 +1214,273 @@ body {
 @media (max-width: 600px) {
   .excerpt-row { padding: 20px 16px; }
   .excerpt-signal p { font-size: 16px; }
+}
+
+/* ---------------------------------------------------------------
+   9. Method
+   --------------------------------------------------------------- */
+
+.method {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(72px, 9vw, 128px) clamp(20px, 5vw, 64px) clamp(76px, 9vw, 124px);
+  background:
+    radial-gradient(90% 70% at 12% 4%, rgba(255, 246, 240, 0.9) 0%, rgba(255, 246, 240, 0) 62%),
+    linear-gradient(152deg, #FBEFEA 0%, #F8E6E2 44%, #F4DDDA 100%);
+}
+
+/* Soft folds of light across the plate. */
+.method-veil {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(104deg,
+    rgba(255, 255, 255, 0.42) 0px,
+    rgba(255, 255, 255, 0.42) 34px,
+    rgba(255, 255, 255, 0) 92px,
+    rgba(255, 255, 255, 0) 150px);
+  -webkit-mask-image: radial-gradient(120% 90% at 30% 20%, #000 0%, rgba(0, 0, 0, 0.35) 62%, transparent 100%);
+  mask-image: radial-gradient(120% 90% at 30% 20%, #000 0%, rgba(0, 0, 0, 0.35) 62%, transparent 100%);
+}
+
+.method-botanical {
+  position: absolute;
+  z-index: 0;
+  left: clamp(-46px, -2vw, 0px);
+  bottom: -20px;
+  width: min(17vw, 200px);
+  stroke: rgba(160, 106, 116, 0.28);
+  stroke-width: 1.1;
+  pointer-events: none;
+}
+
+.method-botanical .leaf {
+  fill: rgba(160, 106, 116, 0.06);
+  stroke: rgba(160, 106, 116, 0.28);
+}
+
+.method-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.method-eyebrow {
+  margin: 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8E4F63;
+}
+
+.method-eyebrow span { color: var(--terracotta-text); }
+
+.method h2 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(32px, 3.8vw, 58px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #3B2430 !important;
+}
+
+.method-lede {
+  margin: 14px 0 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6B5460;
+}
+
+/* Steps */
+.method-steps {
+  list-style: none;
+  margin: clamp(36px, 4.6vw, 56px) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 30px);
+  text-align: left;
+}
+
+.method-step { position: relative; display: flex; }
+
+.method-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 26px 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: linear-gradient(158deg, rgba(255, 252, 250, 0.94), rgba(255, 246, 243, 0.82));
+  box-shadow: 0 14px 40px rgba(90, 54, 66, 0.09);
+}
+
+.method-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.method-number {
+  display: block;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 30px;
+  line-height: 1;
+  color: #9C5A70;
+}
+
+.method-card h3 {
+  margin: 12px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(22px, 1.9vw, 27px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #3B2430 !important;
+}
+
+.method-underline {
+  display: block;
+  width: 46px;
+  height: 2px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: #C88599;
+}
+
+/* Line-art figure on a soft disc. */
+.method-art {
+  flex: 0 0 auto;
+  width: clamp(84px, 8vw, 108px);
+  height: clamp(84px, 8vw, 108px);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(closest-side, rgba(200, 133, 153, 0.16), rgba(200, 133, 153, 0) 78%);
+}
+
+.method-art svg {
+  width: 82%;
+  height: 82%;
+  stroke: #A8657A;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.method-card p {
+  margin: 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: #6B5460;
+}
+
+/* Connector between steps. */
+.method-link {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: calc(clamp(18px, 2.4vw, 30px) / -2);
+  transform: translate(50%, -50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFAF7;
+  border: 1px solid rgba(200, 133, 153, 0.32);
+  box-shadow: 0 4px 14px rgba(90, 54, 66, 0.10);
+}
+
+.method-link svg {
+  width: 16px;
+  height: 16px;
+  stroke: #A8657A;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Closing line */
+.method-closing {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: min(880px, 100%);
+  margin: clamp(30px, 3.6vw, 44px) auto 0;
+  padding: 22px 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 250, 248, 0.72);
+  text-align: left;
+}
+
+.method-closing-badge {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #6B3A4B;
+}
+
+.method-closing-badge svg {
+  width: 22px;
+  height: 22px;
+  stroke: #FBEFEA;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.method-closing p {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.45;
+  color: #3B2430;
+}
+
+.method-closing em { font-style: italic; color: #8E4F63; }
+
+@media (max-width: 900px) {
+  .method-steps { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+  /* The arrow turns down between stacked cards. */
+  .method-link {
+    top: auto;
+    bottom: -8px;
+    right: 50%;
+    transform: translate(50%, 50%) rotate(90deg);
+  }
+
+  .method-step:not(:last-child) { padding-bottom: 12px; }
+}
+
+@media (max-width: 600px) {
+  .method-card { padding: 22px 20px 24px; }
+  .method-art { width: 76px; height: 76px; }
+
+  .method-closing {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+  }
 }
