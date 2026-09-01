@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { ArrowRight, Check, Instagram, MapPin, Play } from 'lucide-react'
+import { ArrowRight, Instagram, MapPin, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
 import MethodSection from './components/MethodSection'
 import PlanExcerpt from './components/PlanExcerpt'
+import PricingSection from './components/PricingSection'
 import ScriptureSection from './components/ScriptureSection'
 import ServiceArt from './components/ServiceArt'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
@@ -47,53 +48,6 @@ const faq = [
   ['What happens after four weeks?', 'Your first four weeks create a baseline. What you learn from that block can shape the next one instead of starting over from guesses.'],
 ]
 
-function PricingCards() {
-  return (
-    <div className="launch-pricing-grid">
-      <article className="launch-price-card">
-        <div className="price-kicker">Founding client</div>
-        <h3>The Build</h3>
-        <div className="launch-price"><span>$149</span><strong>$99</strong></div>
-        <p>A custom four-week plan built around your goals, mobility needs, schedule, and equipment.</p>
-        <ul>
-          <li><Check size={15}/>Mobility and stretching built around you</li>
-          <li><Check size={15}/>Personalized training when it belongs in the plan</li>
-          <li><Check size={15}/>Progress tracking and clear instructions</li>
-          <li><Check size={15}/>One revision within seven days</li>
-        </ul>
-        <Link href="/fit" className="button-primary">See if this fits you <ArrowRight size={15}/></Link>
-      </article>
-
-      <article className="launch-price-card featured">
-        <div className="price-kicker">More support</div>
-        <h3>The Build + Check-Ins</h3>
-        <div className="launch-price"><span>$229</span><strong>$149</strong></div>
-        <p>The same custom build, plus a weekly feedback loop with Abrielle.</p>
-        <ul>
-          <li><Check size={15}/>Everything in The Build</li>
-          <li><Check size={15}/>Four structured weekly check-ins</li>
-          <li><Check size={15}/>Written coach response after each check-in</li>
-          <li><Check size={15}/>Adjustments when your body or schedule needs them</li>
-        </ul>
-        <Link href="/fit" className="button-primary">Choose guided support <ArrowRight size={15}/></Link>
-      </article>
-
-      <article className="launch-price-card">
-        <div className="price-kicker">Longer runway</div>
-        <h3>12-Week Progression</h3>
-        <div className="launch-price single"><strong>$549</strong></div>
-        <p>Three consecutive builds shaped by what you learn in the block before it.</p>
-        <ul>
-          <li><Check size={15}/>Three four-week programs</li>
-          <li><Check size={15}/>Weekly check-ins throughout</li>
-          <li><Check size={15}/>Month 2 and 3 built from real feedback</li>
-          <li><Check size={15}/>Progress tracked across all twelve weeks</li>
-        </ul>
-        <Link href="/fit" className="button-secondary">Explore the 12-week option <ArrowRight size={15}/></Link>
-      </article>
-    </div>
-  )
-}
 
 export default function Home() {
   return (
@@ -157,10 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="launch-pricing section-narrow" id="pricing">
-        <div className="launch-section-head"><div className="section-label">Founding-client pricing</div><h2>Choose the amount of support you want.</h2><p>Start with the fit check so the next step matches what you actually need.</p></div>
-        <PricingCards />
-      </section>
+      <PricingSection />
 
       <section className="about-section section-narrow" id="about">
         <CoachPortrait />
