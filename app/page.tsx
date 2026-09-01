@@ -2,19 +2,11 @@ import Link from 'next/link'
 import { ArrowRight, Check, Instagram, MapPin, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
+import PlanExcerpt from './components/PlanExcerpt'
 import ScriptureSection from './components/ScriptureSection'
 import ServiceArt from './components/ServiceArt'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
-const sampleDay = [
-  ['Barbell Bench Press', '3 × 6–8', '90–120 sec'],
-  ['Incline DB Press', '3 × 8–10', '90 sec'],
-  ['High Slow Cable Fly', '3 × 10–12', '60 sec'],
-  ['Cable Overhead Triceps Extension', '3 × 10–12', '60 sec'],
-  ['Cable Triceps Pushdown', '3 × 10–12', '60 sec'],
-  ['Heel-Elevated Goblet Squat', '3 × 8–10', '90 sec'],
-  ['Quad-Focused Leg Press', '3 × 10–12', '90 sec'],
-]
 
 const phases = [
   ['Release', 'Create space through mobility and stretching. Start with how your body moves today, not where you think it should be.'],
@@ -141,18 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="sample-week section-narrow" id="sample-week">
-        <div className="launch-section-head">
-          <div className="section-label">When training is part of your plan</div>
-          <h2>A real Monday, aligned clearly.</h2>
-          <p>This is one example of the detail you can expect when strength work belongs in your build.</p>
-        </div>
-        <div className="sample-table" role="table" aria-label="Sample Monday training day">
-          <div className="sample-row sample-head" role="row"><span role="columnheader">Exercise</span><span role="columnheader">Sets × reps</span><span role="columnheader">Rest</span></div>
-          {sampleDay.map(([exercise, reps, rest]) => <div className="sample-row" role="row" key={exercise}><strong role="cell">{exercise}</strong><span role="cell">{reps}</span><span role="cell">{rest}</span></div>)}
-        </div>
-        <div className="sample-note"><span>^</span><p>Mobility and stretching can be the whole focus of your plan. Training is not automatically the headline.</p></div>
-      </section>
+      <PlanExcerpt />
 
       <section className="launch-method" id="method">
         <div className="section-narrow">

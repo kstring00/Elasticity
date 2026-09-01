@@ -261,32 +261,6 @@ body {
   color: var(--black);
 }
 
-/* Real training day */
-.sample-table {
-  border-color: color-mix(in srgb, var(--black) 20%, var(--rule));
-}
-
-.sample-head {
-  background: var(--black);
-  color: var(--paper);
-}
-
-.sample-head span {
-  color: color-mix(in srgb, var(--paper) 78%, var(--signal-bright));
-}
-
-.sample-row {
-  border-color: var(--rule);
-  transition: background .18s ease;
-}
-
-.sample-row:not(.sample-head):hover {
-  background: color-mix(in srgb, var(--signal-bright) 12%, var(--paper));
-}
-
-.sample-note {
-  border-left-color: var(--deep);
-}
 
 /* Method is the high-contrast brand moment */
 .launch-method {

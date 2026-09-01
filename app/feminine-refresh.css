@@ -188,7 +188,7 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 }
 .scripture-section p { max-width: 680px; margin: 0 auto; color: var(--graphite); font-size: 1.06rem; }
 
-.caret-bullet,.service-index,.access-note > span,.sample-note > span,.fit-columns li > span { color: var(--rose); font-weight: 700; }
+.caret-bullet,.service-index,.access-note > span,.fit-columns li > span { color: var(--rose); font-weight: 700; }
 
 /* Cards are soft, never athletic/dark. */
 .pain-grid,.deliverable-grid,.fit-columns,.launch-pricing-grid { gap: 16px !important; border: 0 !important; }
@@ -241,27 +241,6 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
 }
 .access-note p { margin:0; color:var(--plum); }
 
-/* Monday table: headers and cells share exact grid + alignment. */
-.sample-table {
-  border: 1px solid rgba(74,44,61,.14) !important;
-  border-radius: 22px !important;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:none !important;
-}
-.sample-row {
-  display:grid !important;
-  grid-template-columns: minmax(220px,1.9fr) minmax(120px,.8fr) minmax(110px,.7fr) !important;
-  align-items:center;
-  border-color:var(--rule) !important;
-}
-.sample-head { background:var(--rose-soft) !important; color:var(--plum) !important; }
-.sample-head span { color:var(--plum) !important; font-weight:700; }
-.sample-head span:first-child,.sample-row strong { text-align:left; }
-.sample-head span:nth-child(2),.sample-head span:nth-child(3),.sample-row > span:nth-child(2),.sample-row > span:nth-child(3) { text-align:center; }
-.sample-row:not(.sample-head):hover { background:rgba(233,195,201,.19) !important; }
-.sample-note { display:flex; gap:12px; align-items:flex-start; margin-top:16px; background:rgba(143,167,143,.10) !important; border:0 !important; border-radius:18px !important; padding:18px 22px; }
-.sample-note p { margin:0; }
 
 /* Method: blush/sage instead of black. */
 .launch-method {
@@ -346,15 +325,12 @@ p,li,a,button,input,textarea,select { font-family: var(--font-sans), Arial, sans
   .services-grid { grid-template-columns:1fr; }
   .service-card { grid-template-columns:42px 1fr; padding:22px 18px; }
   .primary-service h3 { font-size:2.5rem; }
-  .sample-row { grid-template-columns:minmax(145px,1.6fr) minmax(80px,.8fr) minmax(72px,.7fr) !important; }
-  .sample-row > * { padding-left:10px !important; padding-right:10px !important; }
   .video-card { grid-template-columns:1fr; }
   .video-placeholder { min-height:360px; }
   .scripture-section blockquote { font-size:clamp(2.15rem,10vw,3.7rem); }
 }
 
 @media (max-width: 390px) {
-  .sample-row { grid-template-columns:minmax(126px,1.45fr) minmax(72px,.8fr) minmax(64px,.7fr) !important; font-size:.83rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

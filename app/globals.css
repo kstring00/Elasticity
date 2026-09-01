@@ -76,8 +76,7 @@ h3 { font-size: var(--step-h3); line-height: 1.25; }
   border-radius: 2px;
 }
 .launch-method :where(a, button, summary):focus-visible,
-.scorecard-shell :where(a, button, summary):focus-visible,
-.sample-head :where(a, button, summary):focus-visible {
+.scorecard-shell :where(a, button, summary):focus-visible {
   outline-color: var(--signal);
 }
 
