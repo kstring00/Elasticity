@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Check, Instagram, MapPin, Play } from 'lucide-react'
 import CoachPortrait from './components/CoachPortrait'
 import HeroSection from './components/HeroSection'
+import ScriptureSection from './components/ScriptureSection'
 import ServiceArt from './components/ServiceArt'
 import { INSTAGRAM_URL, hasInstagram } from '../lib/site'
 
@@ -111,12 +112,7 @@ export default function Home() {
     <main className="launch-home">
       <HeroSection />
 
-      <section className="scripture-section section-narrow" aria-label="Isaiah 54:2">
-        <div className="caret-divider" aria-hidden="true">^</div>
-        <div className="scripture-reference">Isaiah 54:2 · ESV</div>
-        <blockquote>“Enlarge the place of your tent, and let the curtains of your habitations be stretched out; do not hold back…”</blockquote>
-        <p>This is the heart of El^sticity: make room, stretch wider, strengthen what supports you, and build from there.</p>
-      </section>
+      <ScriptureSection />
 
       <section className="services-section svc-section section-narrow" id="services">
         <div className="svc-head">
