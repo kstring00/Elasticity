@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Scorecard from './Scorecard'
 
-// The source photograph is 1000px wide; 1600w is a sharpened upscale so wide
-// viewports do not fall back to the browser stretching the 1000w step.
+// Every step below is real detail from the 4820px original, so nothing is
+// upscaled. Regenerate with scripts/make-hero-derivatives.py.
 const SIZES = '100vw'
 const SRCSET = (ext: string) =>
-  `/hero-lakeside-640.${ext} 640w, /hero-lakeside-1000.${ext} 1000w, /hero-lakeside-1600.${ext} 1600w`
+  `/hero-640.${ext} 640w, /hero-1000.${ext} 1000w, /hero-1600.${ext} 1600w, /hero-2200.${ext} 2200w`
 
 export default function HeroSection() {
   return (
@@ -14,7 +14,7 @@ export default function HeroSection() {
       <link
         rel="preload"
         as="image"
-        href="/hero-lakeside-1600.avif"
+        href="/hero-2200.avif"
         type="image/avif"
         imageSrcSet={SRCSET('avif')}
         imageSizes={SIZES}
@@ -26,14 +26,14 @@ export default function HeroSection() {
         <source type="image/webp" srcSet={SRCSET('webp')} sizes={SIZES} />
         <img
           className="hero-img"
-          src="/hero-lakeside-1600.jpg"
+          src="/hero-2200.jpg"
           srcSet={SRCSET('jpg')}
           sizes={SIZES}
-          width={1600}
-          height={1035}
+          width={2200}
+          height={910}
           fetchPriority="high"
           decoding="async"
-          alt="A woman stretching in a seated side bend on the shore of a lake at sunrise."
+          alt="A woman holding dancer’s pose on coastal rocks against a sunset sky."
         />
       </picture>
 
