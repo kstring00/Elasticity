@@ -80,18 +80,6 @@
 
 
 /* ---------- Method ---------- */
-.launch-method{background:var(--paper);border-top:1px solid var(--rule)}
-.launch-method .launch-section-head p{color:var(--graphite)}
-.week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule)}
-.week-grid article{min-height:0;padding:22px 20px 26px 0;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:flex-start;background:none;border-radius:0}
-.week-grid article:last-child{border-right:0}
-.week-grid article+article{padding-left:20px}
-.week-grid article>span{font-family:var(--font-mono),ui-monospace,monospace;font-variant-numeric:tabular-nums;color:var(--signal-strong);font-size:.8125rem;letter-spacing:.08em;font-weight:500}
-.week-grid h3{font-size:var(--step-h3);margin:8px 0 8px}
-.week-grid p{font-size:.875rem;line-height:1.6;color:var(--graphite);margin:0}
-.method-closing{display:flex;justify-content:space-between;gap:24px;margin-top:0;padding-top:20px;border-top:1px solid var(--rule)}
-.method-closing strong{font-family:var(--font-display),Georgia,serif;font-weight:500;font-size:var(--step-h3)}
-.method-closing span{max-width:460px;color:var(--graphite);font-size:.875rem;line-height:1.6}
 
 
 /* ---------- Pricing ---------- */
@@ -201,10 +189,10 @@
   .launch-nav a:not(.nav-fit){display:none}
   .launch-hero{grid-template-columns:1fr;padding-top:52px}
   .scorecard-shell{width:min(620px,100%)}
-  .pain-grid,.week-grid{grid-template-columns:1fr 1fr}
-  .pain-grid article,.week-grid article{border-bottom:1px solid var(--rule)}
-  .pain-grid article:nth-child(2n),.week-grid article:nth-child(2n){border-right:0}
-  .pain-grid article:nth-child(2n),.week-grid article:nth-child(2n){padding-left:22px}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .pain-grid article{border-bottom:1px solid var(--rule)}
+  .pain-grid article:nth-child(2n){border-right:0}
+  .pain-grid article:nth-child(2n){padding-left:22px}
   .launch-pricing-grid{grid-template-columns:1fr}
   .launch-price-card{border-right:0;border-bottom:1px solid var(--rule);padding-left:0;padding-right:0}
   .launch-price-card:last-child{border-bottom:0}
@@ -226,14 +214,12 @@
   .scorecard-grid{grid-template-columns:1.4fr .5fr .5fr;font-size:.8125rem;gap:8px;padding:12px 14px}
   .scorecard-grid strong{font-size:.8125rem}
   .scorecard-head,.scorecard-foot{padding-left:14px;padding-right:14px}
-  .pain-grid,.deliverable-grid,.week-grid{grid-template-columns:1fr}
-  .pain-grid article,.week-grid article,.deliverable-grid article{border-right:0;border-bottom:1px solid var(--rule);padding:20px 0}
-  .pain-grid article:last-child,.week-grid article:last-child{border-bottom:0}
+  .pain-grid,.deliverable-grid{grid-template-columns:1fr}
+  .pain-grid article,.deliverable-grid article{border-right:0;border-bottom:1px solid var(--rule);padding:20px 0}
   .deliverable-grid article:nth-child(odd){border-right:0}
-  .deliverable-grid article:nth-child(even),.pain-grid article+article,.week-grid article+article{padding-left:0}
+  .deliverable-grid article:nth-child(even),.pain-grid article+article{padding-left:0}
   .deliverable-grid article:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
   .deliverable-grid article:last-child{border-bottom:0}
-  .method-closing{flex-direction:column;gap:10px}
   .about-section{width:calc(100% - 30px);grid-template-columns:1fr;padding:40px 0;margin-bottom:0}
   .about-mark,.about-portrait{display:none}
   .launch-footer .footer-links{display:grid;grid-template-columns:1fr 1fr}
